@@ -16,13 +16,9 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       width: 150,
       crop: "scale",
     });
-  } catch (error) {
-    console.log(error.message);
-  }
 
-  const { name, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-  try {
     const user = await User.create({
       name,
       email,
