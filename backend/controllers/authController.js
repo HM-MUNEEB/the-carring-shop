@@ -8,13 +8,41 @@ const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
+const path = "path";
+const fs = "fs";
+const Jimp = "jimp";
+
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  //Defualt upload directory for images upload
+
+  const rootDir = "../uploads";
+
+  if (!fs.existsSync(rootDir)) {
+    fs.mkdirSync(rootDir);
+  }
+
+  let d = new Date();
+  let todaysDir = d.toISOString().split("T")[0];
+
+  const dir = path.join(dir, todaysDir);
+  console.log(dir);
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  console.log(req.body.avatar);
   try {
-    // const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    //   width: 150,
-    //   crop: "scale",
-    // });
+    // Jimp.read(req.body.avatar)
+    //   .then((image) => {
+    //     return image
+    //       .quality(60) // set JPEG quality
+    //       .write(); // save
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
 
     const { name, email, password } = req.body;
     console.log("Cloundinary Response: ", result);

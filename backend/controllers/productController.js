@@ -15,22 +15,24 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   }
 
   let imagesLinks = [];
+  // console.log(images);
+  // for (let i = 0; i < images.length; i++) {
+  //   const result = await cloudinary.v2.uploader.upload(images[i], {
+  //     folder: "products",
+  //   });
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
-    });
-
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
-  }
+  //   imagesLinks.push({
+  //     public_id: result.public_id,
+  //     url: result.secure_url,
+  //   });
+  // }
 
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
 
+  console.log("Got from client: ", req.body);
   const product = await Product.create(req.body);
+
   res.status(201).json({
     success: true,
     product,
