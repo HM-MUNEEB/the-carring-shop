@@ -9,7 +9,6 @@ const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
 const path = "path";
-const fs = "fs";
 const Jimp = "jimp";
 
 // Register a user   => /api/v1/register

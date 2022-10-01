@@ -49,7 +49,8 @@ const Register = () => {
     formData.set("email", email);
     formData.set("password", password);
     formData.set("avatar", avatar);
-    dispatch(register(res));
+
+    dispatch(register(formData));
   };
 
   const onchange = (e) => {

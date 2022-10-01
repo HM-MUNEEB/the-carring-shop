@@ -23,8 +23,8 @@ const CategorySection = () => {
                 style={{ borderRadius: "20px" }}
               >
                 <div class="category-icon">
-                  <Link to={`/search/${category.name}`}>
-                    <img src={category.images[0].url} />
+                  <Link to={`/search/${category?.name}`}>
+                    <img src={category?.images[0]?.url} />
                   </Link>
                 </div>
                 <h5 class="category-title">

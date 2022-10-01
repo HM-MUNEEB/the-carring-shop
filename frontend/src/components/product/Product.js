@@ -10,13 +10,17 @@ const Product = ({ product, col }) => {
           style={{ borderRadius: "20px" }}
         >
           <div className="eg-porduct-thumb">
-            <Link to={`/product/${product._id}`}  >
-              <img
-                className="p-3"
-                src={product.images[0].url}
-                alt="Product Img"
-                style={{ width: "100%" }}
-              />
+            <Link to={`/product/${product._id}`}>
+              {product.images ? (
+                <img
+                  className="p-3"
+                  src={product?.images[0]?.url}
+                  alt="Product Img"
+                  style={{ width: "100%" }}
+                />
+              ) : (
+                ""
+              )}
             </Link>
           </div>
           <div className="eg-porduct-body mt-2">

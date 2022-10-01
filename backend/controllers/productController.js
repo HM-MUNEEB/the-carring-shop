@@ -5,6 +5,10 @@ const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const APIFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
 
+const path = require("path");
+const fs = require("fs");
+const Jimp = require("jimp");
+
 // Create new product   =>   /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   let images = [];
@@ -14,18 +18,36 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     images = req.body.images;
   }
 
-  let imagesLinks = [];
-  // console.log(images);
-  // for (let i = 0; i < images.length; i++) {
-  //   const result = await cloudinary.v2.uploader.upload(images[i], {
-  //     folder: "products",
-  //   });
+  console.log(images);
 
-  //   imagesLinks.push({
-  //     public_id: result.public_id,
-  //     url: result.secure_url,
-  //   });
-  // }
+  const dir = "../uploads";
+
+  console.log(dir);
+
+  let imagesLinks = [];
+  try {
+    console.log(images);
+    for (let i = 0; i < images.length; i++) {
+      // const filePath = dir + "/" + images[i].imageDetails.name;
+      Jimp.read(images[i].image)
+        .then((image) => {
+          return image
+            .quality(60) // set JPEG quality
+            .write("image.jpeg"); // save
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+
+      console.log("File Path: ", filePath);
+
+      imagesLinks.push({
+        url: filePath,
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
 
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
@@ -147,11 +169,11 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   }
 
   // Deleting images associated with the product
-  for (let i = 0; i < product.images.length; i++) {
-    const result = await cloudinary.v2.uploader.destroy(
-      product.images[i].public_id
-    );
-  }
+  // for (let i = 0; i < product.images.length; i++) {
+  //   const result = await cloudinary.v2.uploader.destroy(
+  //     product.images[i].public_id
+  //   );
+  // }
 
   await product.remove();
 
