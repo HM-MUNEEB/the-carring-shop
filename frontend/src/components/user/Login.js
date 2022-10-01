@@ -24,6 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
+      alert.success("Logged in successfully.");
       history.push(redirect);
     }
 

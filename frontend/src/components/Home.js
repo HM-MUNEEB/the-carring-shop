@@ -102,7 +102,7 @@ const Home = ({ match }) => {
             </>
           )}
 
-          <section id="products" className="container mt-5">
+          {/* <section id="products" className="container mt-5">
             <div className="row">
               {keyword ? (
                 <Fragment>
@@ -192,7 +192,7 @@ const Home = ({ match }) => {
                 </>
               )}
             </div>
-          </section>
+          </section> */}
 
           {resPerPage <= count && (
             <div className="d-flex justify-content-center mt-5">

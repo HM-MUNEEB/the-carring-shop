@@ -55,11 +55,15 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
 
+    console.log("User information at login:", data.user);
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: data.user,
     });
   } catch (error) {
+    console.log("Error At Login:", error.message);
+
     dispatch({
       type: LOGIN_FAIL,
       payload: error.response.data.message,
@@ -79,13 +83,14 @@ export const register = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.post("/api/v1/register", userData, config);
-    console.log(data);
+    console.log("User information at register:", data.user);
 
     dispatch({
       type: REGISTER_USER_SUCCESS,
       payload: data.user,
     });
   } catch (error) {
+    console.log("Error At Register:", error.message);
     dispatch({
       type: REGISTER_USER_FAIL,
       payload: error.response.data.message,
@@ -224,6 +229,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     await axios.get("/api/v1/logout");
+    console.log("User logedout!");
 
     dispatch({
       type: LOGOUT_SUCCESS,

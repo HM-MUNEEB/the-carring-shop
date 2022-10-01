@@ -30,6 +30,7 @@ const Register = () => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("IsAuthendicated: ", isAuthenticated);
     if (isAuthenticated) {
       history.push("/");
     }
@@ -48,8 +49,7 @@ const Register = () => {
     formData.set("email", email);
     formData.set("password", password);
     formData.set("avatar", avatar);
-
-    dispatch(register(formData));
+    dispatch(register(res));
   };
 
   const onchange = (e) => {
