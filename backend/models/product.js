@@ -48,6 +48,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  status: {
+    type: Boolean,
+    default: false,
+  },
   reviews: [
     {
       user: {
