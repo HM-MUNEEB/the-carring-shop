@@ -40,7 +40,7 @@ const Header = () => {
                 <ul className="d-flex align-items-center">
                   <li className="menu-item">
                     <Link to="/" className="menu-link">
-                      Hamza
+                      The Caring Shop
                     </Link>
                   </li>
                   <li>
