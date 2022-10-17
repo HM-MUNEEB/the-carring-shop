@@ -50,6 +50,8 @@ const Register = () => {
     formData.set("password", password);
     formData.set("avatar", avatar);
 
+    console.log(formData);
+
     dispatch(register(formData));
   };
 

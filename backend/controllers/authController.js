@@ -15,23 +15,25 @@ const Jimp = "jimp";
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   //Defualt upload directory for images upload
 
-  const rootDir = "../uploads";
+  // const rootDir = "../uploads";
 
-  if (!fs.existsSync(rootDir)) {
-    fs.mkdirSync(rootDir);
-  }
+  // if (!fs.existsSync(rootDir)) {
+  //   fs.mkdirSync(rootDir);
+  // }
 
-  let d = new Date();
-  let todaysDir = d.toISOString().split("T")[0];
+  // let d = new Date();
+  // let todaysDir = d.toISOString().split("T")[0];
 
-  const dir = path.join(dir, todaysDir);
-  console.log(dir);
+  // const dir = path.join(dir, todaysDir);
+  // console.log(dir);
 
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir);
-  }
+  // if (!fs.existsSync(dir)) {
+  //   fs.mkdirSync(dir);
+  // }
+  console.log(req.body);
+  const { name, email, password } = req.body;
 
-  console.log(req.body.avatar);
+  // console.log(req.body.avatar);
   try {
     // Jimp.read(req.body.avatar)
     //   .then((image) => {
@@ -43,8 +45,11 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     //     console.error(err);
     //   });
 
-    const { name, email, password } = req.body;
-    console.log("Cloundinary Response: ", result);
+    // Checks if email and password is entered by user
+    if (!email || !password) {
+      return next(new ErrorHandler("Please enter email & password", 400));
+    }
+    // console.log("Cloundinary Response: ", result);
 
     const user = await User.create({
       name,
@@ -58,7 +63,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     console.log("User Created!!!");
     sendToken(user, 200, res);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 });
 
