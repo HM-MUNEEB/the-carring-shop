@@ -8,43 +8,13 @@ const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
-const path = "path";
-const Jimp = "jimp";
-
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  //Defualt upload directory for images upload
-
-  // const rootDir = "../uploads";
-
-  // if (!fs.existsSync(rootDir)) {
-  //   fs.mkdirSync(rootDir);
-  // }
-
-  // let d = new Date();
-  // let todaysDir = d.toISOString().split("T")[0];
-
-  // const dir = path.join(dir, todaysDir);
-  // console.log(dir);
-
-  // if (!fs.existsSync(dir)) {
-  //   fs.mkdirSync(dir);
-  // }
   console.log(req.body);
   const { name, email, password } = req.body;
 
   // console.log(req.body.avatar);
   try {
-    // Jimp.read(req.body.avatar)
-    //   .then((image) => {
-    //     return image
-    //       .quality(60) // set JPEG quality
-    //       .write(); // save
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-
     // Checks if email and password is entered by user
     if (!email || !password) {
       return next(new ErrorHandler("Please enter email & password", 400));

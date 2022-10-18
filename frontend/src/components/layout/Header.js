@@ -132,14 +132,15 @@ const Header = () => {
                             <ul className="d-flex align-items-center">
                               <li className="menu-item">
                                 <figure className="avatar avatar-nav">
-                                  <img
+                                  {/* <img
                                     src={user.avatar && user.avatar.url}
                                     alt={user && user.name}
                                     className="rounded-circle"
-                                  />
+                                  /> */}
                                 </figure>
                                 <Link to="" className="menu-link ">
-                                  {user.name}
+                                  {/* {user.name} */}
+                                  Zain hashmi
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
