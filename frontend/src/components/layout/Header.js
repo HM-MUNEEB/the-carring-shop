@@ -117,9 +117,9 @@ const Header = () => {
               </nav>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-4 ">
-              <Link to="/" class="header-1-logo text-center  ">
+              {/* <Link to="/" class="header-1-logo text-center  ">
                 <img src="/images/header-1-logo.svg" alt="" />
-              </Link>
+              </Link> */}
             </div>
             <div className=" col-lg-5 col-md-5 col-sm-8 d-sm-block d-none">
               <div className="header-right-area d-flex justify-content-end align-items-center">
