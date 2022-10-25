@@ -73,7 +73,7 @@ const Home = ({ match }) => {
             <Banner
               src="https://res.cloudinary.com/hba-solver/image/upload/v1657880938/banner/bg1_jszeky.png"
               search="true"
-              text="Enjoy Your Shopping With The Best Quality"
+              text="Enjoy Your With The Best Quality"
               text2="Get your products delivered at your shopsteps all day everyday"
             />
           )}
