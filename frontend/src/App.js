@@ -49,6 +49,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import UserPage from "./components/user/UserPage";
 import Contact from "./components/Contact";
 
+//super-admin
+import SuperLogin from "./components/super-admin/login";
+
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
@@ -75,6 +78,7 @@ function App() {
           <Route path="/product/:id" component={ProductDetails} exact />
 
           <Route path="/cart" component={Cart} exact />
+          <Route path="/super-admin" component={SuperLogin} exact />
           <ProtectedRoute path="/shipping" component={Shipping} />
           <ProtectedRoute path="/confirm" component={ConfirmOrder} exact />
           <ProtectedRoute path="/success" component={OrderSuccess} />
@@ -165,6 +169,7 @@ function App() {
           component={ProductReviews}
           exact
         />
+
         <Footer />
       </div>
     </Router>
