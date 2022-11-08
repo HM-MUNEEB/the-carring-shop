@@ -22,7 +22,7 @@ const SuperLogin = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      alert.success("Logged in successfully.");
+      alert.success("Logged in successfullys");
       //   history.push(redirect);
     }
 
