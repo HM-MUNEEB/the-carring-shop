@@ -85,7 +85,6 @@ function App() {
           )}
 
           <Route path="/login" component={UserPage} />
-          {/* <Route path="/register" component={Register} /> */}
           <Route path="/password/forgot" component={ForgotPassword} exact />
           <Route path="/password/reset/:token" component={NewPassword} exact />
           <ProtectedRoute path="/me" component={Profile} exact />
@@ -167,7 +166,6 @@ function App() {
           exact
         />
         <Footer />
-        {/* {!loading && (!isAuthenticated || user.role !== "admin") && } */}
       </div>
     </Router>
   );
