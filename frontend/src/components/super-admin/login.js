@@ -19,13 +19,11 @@ const SuperLogin = () => {
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.auth
   );
-  const location = useLocation();
-  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
     if (isAuthenticated) {
       alert.success("Logged in successfully.");
-      history.push(redirect);
+      //   history.push(redirect);
     }
 
     if (error) {
@@ -36,7 +34,7 @@ const SuperLogin = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    // dispatch(login(email, password));
   };
 
   return (
