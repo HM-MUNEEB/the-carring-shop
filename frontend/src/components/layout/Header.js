@@ -139,8 +139,8 @@ const Header = () => {
                                   /> */}
                                 </figure>
                                 <Link to="" className="menu-link ">
-                                  {/* {user.name} */}
-                                  Zain hashmi
+                                  {user.name}
+
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
