@@ -9,7 +9,7 @@ import { newProduct, clearErrors } from "../../actions/productActions";
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import Loader from "../layout/Loader";
 
-const NewProduct = ({ history }) => {
+const SuperNewProduct = ({ history }) => {
   const { category } = useSelector((state) => state.category);
 
   const [name, setName] = useState("");
@@ -227,4 +227,4 @@ const NewProduct = ({ history }) => {
   );
 };
 
-export default NewProduct;
+export default SuperNewProduct;

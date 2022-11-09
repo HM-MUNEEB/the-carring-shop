@@ -9,7 +9,7 @@ import { NEW_CATRGORY_RESET } from "../../constants/categoryConstants";
 import { newCategory, clearErrors } from "../../actions/categoryActions";
 import Loader from "../layout/Loader";
 
-const NewCategory = ({ history }) => {
+const SuperNewCategory = ({ history }) => {
   const [name, setName] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -147,4 +147,4 @@ const NewCategory = ({ history }) => {
   );
 };
 
-export default NewCategory;
+export default SuperNewCategory;

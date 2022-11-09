@@ -15,7 +15,7 @@ import {
 } from "../../actions/orderActions";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrdersList = ({ history }) => {
+const SuperOrdersList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
 
@@ -136,4 +136,4 @@ const OrdersList = ({ history }) => {
   );
 };
 
-export default OrdersList;
+export default SuperOrdersList;

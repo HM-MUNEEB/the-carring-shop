@@ -15,7 +15,7 @@ import {
 } from "../../actions/productActions";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const ProductsList = ({ history }) => {
+const SuperProductsList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
 
@@ -143,4 +143,4 @@ const ProductsList = ({ history }) => {
   );
 };
 
-export default ProductsList;
+export default SuperProductsList;

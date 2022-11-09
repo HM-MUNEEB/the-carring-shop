@@ -84,12 +84,7 @@ function App() {
           <Route path="/product/:id" component={ProductDetails} exact />
 
           <Route path="/cart" component={Cart} exact />
-          <Route path="/super-admin" component={SuperLogin} exact />
-          <Route
-            path="/super-admin/dashboard"
-            component={SuperDashboard}
-            exact
-          />
+
           <ProtectedRoute path="/shipping" component={Shipping} />
           <ProtectedRoute path="/confirm" component={ConfirmOrder} exact />
           <ProtectedRoute path="/success" component={OrderSuccess} />
@@ -180,6 +175,11 @@ function App() {
           component={ProductReviews}
           exact
         />
+
+        {/* super-admin routes */}
+
+        <Route path="/super-admin" component={SuperLogin} exact />
+        <Route path="/super-admin/dashboard" component={SuperDashboard} exact />
 
         <Footer />
       </div>

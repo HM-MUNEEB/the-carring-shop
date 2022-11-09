@@ -12,7 +12,7 @@ import {
 } from "../../actions/productActions";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const UpdateProduct = ({ match, history }) => {
+const SuperUpdateProduct = ({ match, history }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
@@ -275,4 +275,4 @@ const UpdateProduct = ({ match, history }) => {
   );
 };
 
-export default UpdateProduct;
+export default SuperUpdateProduct;

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { allUsers, deleteUser, clearErrors } from "../../actions/userActions";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
-const UsersList = ({ history }) => {
+const SuperUsersList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
 
@@ -127,4 +127,4 @@ const UsersList = ({ history }) => {
   );
 };
 
-export default UsersList;
+export default SuperUsersList;

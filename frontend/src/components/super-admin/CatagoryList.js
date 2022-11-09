@@ -14,7 +14,7 @@ import {
 } from "../../actions/categoryActions";
 import { DELETE_CATEGORY_RESET } from "../../constants/categoryConstants";
 
-const CategorysList = ({ history }) => {
+const SuperCategorysList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
 
@@ -118,4 +118,4 @@ const CategorysList = ({ history }) => {
   );
 };
 
-export default CategorysList;
+export default SuperCategorysList;

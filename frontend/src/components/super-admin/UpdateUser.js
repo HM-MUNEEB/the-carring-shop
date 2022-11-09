@@ -12,7 +12,7 @@ import {
 } from "../../actions/userActions";
 import { UPDATE_USER_RESET } from "../../constants/userConstants";
 
-const UpdateUser = ({ history, match }) => {
+const SuperUpdateUser = ({ history, match }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
@@ -130,4 +130,4 @@ const UpdateUser = ({ history, match }) => {
   );
 };
 
-export default UpdateUser;
+export default SuperUpdateUser;
