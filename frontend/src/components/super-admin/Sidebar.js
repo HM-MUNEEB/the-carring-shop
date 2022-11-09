@@ -6,6 +6,9 @@ const Sidebar = () => {
     <div className="sidebar-wrapper">
       <nav id="sidebar">
         <ul className="list-unstyled components mt-4">
+          <li className="mb-4">
+            <h4>Super-admin</h4>
+          </li>
           <li>
             <Link to="/super-admin/dashboard">
               <i className="fa fa-tachometer"></i> Dashboard
