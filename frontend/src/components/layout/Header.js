@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
@@ -11,6 +11,7 @@ import { getCategory } from "../../actions/categoryActions";
 const Header = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
+  const location = useLocation();
   useEffect(() => {
     dispatch(getCategory());
   }, [dispatch]);
@@ -43,35 +44,41 @@ const Header = () => {
                       The Caring Shop
                     </Link>
                   </li>
-                  <li>
-                    <ul className="d-flex">
+                  {!location.pathname.includes("super-admin") ? (
+                    <>
                       <li>
-                        <nav className="main-nav d-none d-lg-block">
-                          <ul className="d-flex align-items-center">
-                            <li className="menu-item">
-                              <Link to="" className="menu-link ">
-                                Categories
-                              </Link>
-                              <ul className="submenu-home1">
-                                {category?.map((category) => (
-                                  <li>
-                                    <Link to={`/search/${category.name}`}>
-                                      {category.name}
-                                    </Link>
-                                  </li>
-                                ))}
+                        <ul className="d-flex">
+                          <li>
+                            <nav className="main-nav d-none d-lg-block">
+                              <ul className="d-flex align-items-center">
+                                <li className="menu-item">
+                                  <Link to="" className="menu-link ">
+                                    Categories
+                                  </Link>
+                                  <ul className="submenu-home1">
+                                    {category?.map((category) => (
+                                      <li>
+                                        <Link to={`/search/${category.name}`}>
+                                          {category.name}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </li>
                               </ul>
-                            </li>
-                          </ul>
-                        </nav>
+                            </nav>
+                          </li>
+                        </ul>
                       </li>
-                    </ul>
-                  </li>
-                  <li className="menu-item">
-                    <Link to="/contact" className="menu-link">
-                      Contact
-                    </Link>
-                  </li>
+                      <li className="menu-item">
+                        <Link to="/contact" className="menu-link">
+                          Contact
+                        </Link>
+                      </li>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </nav>
               <nav className="main-nav d-block d-lg-none">
