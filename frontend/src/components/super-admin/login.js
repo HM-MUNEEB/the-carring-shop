@@ -20,20 +20,23 @@ const SuperLogin = () => {
     (state) => state.auth
   );
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      alert.success("Logged in successfullys");
-      //   history.push(redirect);
-    }
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     alert.success("Logged in successfullys");
+  //     //   history.push(redirect);
+  //   }
 
-    if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
-    }
-  }, [dispatch, alert, isAuthenticated, error, history]);
+  //   if (error) {
+  //     alert.error(error);
+  //     dispatch(clearErrors());
+  //   }
+  // }, [dispatch, alert, isAuthenticated, error, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (email == "admin@gmail.com" && password == "admin") {
+      history.push("super-admin/dashboard");
+    }
     // dispatch(login(email, password));
   };
 

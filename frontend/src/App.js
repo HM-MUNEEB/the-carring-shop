@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, useLocation } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -50,9 +50,12 @@ import UserPage from "./components/user/UserPage";
 import Contact from "./components/Contact";
 
 //super-admin
-import SuperLogin from "./components/super-admin/login";
+import SuperLogin from "./components/super-admin/Login";
+import SuperDashboard from "./components/super-admin/Dashboard";
 
 function App() {
+  const location = useLocation();
+
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   useEffect(() => {
@@ -79,6 +82,11 @@ function App() {
 
           <Route path="/cart" component={Cart} exact />
           <Route path="/super-admin" component={SuperLogin} exact />
+          <Route
+            path="/super-admin/dashboard"
+            component={SuperDashboard}
+            exact
+          />
           <ProtectedRoute path="/shipping" component={Shipping} />
           <ProtectedRoute path="/confirm" component={ConfirmOrder} exact />
           <ProtectedRoute path="/success" component={OrderSuccess} />
