@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import MetaData from "../layout/MetaData";
 import Loader from "../layout/Loader";
@@ -13,6 +13,8 @@ import { allUsers } from "../../actions/userActions";
 
 const SuperDashboard = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  console.log(location.pathname);
 
   const { products } = useSelector((state) => state.products);
   const { users } = useSelector((state) => state.allUsers);

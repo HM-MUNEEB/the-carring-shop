@@ -23,13 +23,13 @@ const Sidebar = () => {
             </a>
             <ul className="collapse list-unstyled" id="productSubmenu">
               <li>
-                <Link to="/admin/products">
+                <Link to="/super-admin/products">
                   <i className="fa fa-clipboard"></i> All
                 </Link>
               </li>
 
               <li>
-                <Link to="/admin/product">
+                <Link to="/super-admin/product">
                   <i className="fa fa-plus"></i> Create
                 </Link>
               </li>
@@ -46,13 +46,13 @@ const Sidebar = () => {
             </a>
             <ul className="collapse list-unstyled" id="categorySubmenu">
               <li>
-                <Link to="/admin/category">
+                <Link to="/super-admin/category">
                   <i className="fa fa-clipboard"></i> All
                 </Link>
               </li>
 
               <li>
-                <Link to="/admin/category/new">
+                <Link to="/super-admin/category/new">
                   <i className="fa fa-plus"></i> Create
                 </Link>
               </li>
@@ -60,19 +60,19 @@ const Sidebar = () => {
           </li>
 
           <li>
-            <Link to="/admin/orders">
+            <Link to="/super-admin/orders">
               <i className="fa fa-shopping-basket"></i> Orders
             </Link>
           </li>
 
           <li>
-            <Link to="/admin/users">
+            <Link to="/super-admin/users">
               <i className="fa fa-users"></i> Users
             </Link>
           </li>
 
           <li>
-            <Link to="/admin/reviews">
+            <Link to="/super-admin/reviews">
               <i className="fa fa-star"></i> Reviews
             </Link>
           </li>

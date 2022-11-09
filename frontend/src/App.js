@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -54,7 +55,8 @@ import SuperLogin from "./components/super-admin/Login";
 import SuperDashboard from "./components/super-admin/Dashboard";
 
 function App() {
-  const location = useLocation();
+  //To get the route
+  // const locationIx = useLocation();
 
   const [stripeApiKey, setStripeApiKey] = useState("");
 
@@ -73,6 +75,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {/* {!location.pathname.includes("super-admin") ? <Header /> : ""} */}
         <Header />
         <div className="">
           <Route path="/" component={Home} exact />
