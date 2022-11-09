@@ -53,6 +53,16 @@ import Contact from "./components/Contact";
 //super-admin
 import SuperLogin from "./components/super-admin/Login";
 import SuperDashboard from "./components/super-admin/Dashboard";
+import SuperProductsList from "./components/super-admin/ProductsList";
+import SuperNewProduct from "./components/super-admin/NewProduct";
+import SuperUpdateProduct from "./components/super-admin/UpdateProduct";
+import SuperOrdersList from "./components/super-admin/OrdersList";
+import SuperProcessOrder from "./components/super-admin/ProcessOrder";
+import SuperUsersList from "./components/super-admin/UsersList";
+import SuperUpdateUser from "./components/super-admin/UpdateUser";
+import SuperProductReviews from "./components/super-admin/ProductReviews";
+import SuperNewCategory from "./components/super-admin/NewCategory";
+import SuperCategorysList from "./components/super-admin/CatagoryList";
 
 function App() {
   //To get the route
@@ -180,7 +190,25 @@ function App() {
 
         <Route path="/super-admin" component={SuperLogin} exact />
         <Route path="/super-admin/dashboard" component={SuperDashboard} exact />
-
+        <Route path="/super-admin/products" component={ProductsList} exact />
+        <Route path="/super-admin/product" component={NewProduct} exact />
+        <Route path="/super-admin/category" component={CategorysList} exact />
+        <Route path="/super-admin/category/new" component={NewCategory} exact />
+        <Route
+          path="/super-admin/product/:id"
+          component={UpdateProduct}
+          exact
+        />
+        <Route path="/super-admin/orders" component={OrdersList} exact />
+        <Route
+          path="/super-admin/order/:id"
+          Route
+          component={ProcessOrder}
+          exact
+        />
+        <Route path="/super-admin/users" component={UsersList} exact />
+        <Route path="/super-admin/user/:id" component={UpdateUser} exact />
+        <Route path="/super-admin/reviews" component={ProductReviews} exact />
         <Footer />
       </div>
     </Router>
