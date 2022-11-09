@@ -7,7 +7,7 @@ const Sidebar = () => {
       <nav id="sidebar">
         <ul className="list-unstyled components mt-4">
           <li>
-            <Link to="/dashboard">
+            <Link to="/super-admin/dashboard">
               <i className="fa fa-tachometer"></i> Dashboard
             </Link>
           </li>

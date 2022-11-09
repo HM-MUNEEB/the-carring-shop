@@ -90,10 +90,7 @@ const SuperLogin = () => {
                       type="submit"
                       style={{ border: "none", background: "none" }}
                     >
-                      <Link
-                        to=""
-                        className="primary--btn login-btn text-uppercase"
-                      >
+                      <Link className="primary--btn login-btn text-uppercase">
                         login Super-admin
                       </Link>
                     </button>
