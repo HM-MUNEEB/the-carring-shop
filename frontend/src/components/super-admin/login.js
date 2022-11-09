@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData";
 
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { login, clearErrors } from "../../actions/userActions";
+import { login, clearErrors, logout } from "../../actions/userActions";
 
 const SuperLogin = () => {
   const [email, setEmail] = useState("");
@@ -34,11 +34,26 @@ const SuperLogin = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     if (email == "admin@gmail.com" && password == "admin") {
+      if (isAuthenticated) {
+        logoutHandler();
+      }
       history.push("super-admin/dashboard");
     }
     // dispatch(login(email, password));
   };
+  const logoutHandler = () => {
+    dispatch(logout());
+    alert.success(
+      "Logged out! Beacause you are trying to log in as Super-admin. "
+    );
+  };
+  useEffect(() => {
+    if (isAuthenticated) {
+      logoutHandler();
+    }
+  }, []);
 
   return (
     <Fragment>
