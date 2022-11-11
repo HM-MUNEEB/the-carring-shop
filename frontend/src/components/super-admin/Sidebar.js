@@ -45,7 +45,7 @@ const Sidebar = () => {
               aria-expanded="false"
               className="dropdown-toggle"
             >
-              <i className="fa fa-product-hunt"></i>
+              <i className="fa fa-product-hunt"></i> Category
             </a>
             <ul className="collapse list-unstyled" id="categorySubmenu">
               <li>
