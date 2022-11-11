@@ -18,7 +18,7 @@ const Sidebar = () => {
           <li>
             <a
               href="#productSubmenu"
-              data-toggle=""
+              data-toggle="collapse"
               aria-expanded="false"
               className="dropdown-toggle"
             >
