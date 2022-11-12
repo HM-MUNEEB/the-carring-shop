@@ -50,7 +50,7 @@ const Sidebar = () => {
             <ul className="collapse list-unstyled" id="categorySubmenu">
               <li>
                 <Link to="/super-admin/category">
-                  <i className="fa fa-clipboard"></i> All
+                  <i className="fa fa-clipboard"></i>
                 </Link>
               </li>
 
