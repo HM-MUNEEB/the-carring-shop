@@ -190,25 +190,41 @@ function App() {
 
         <Route path="/super-admin" component={SuperLogin} exact />
         <Route path="/super-admin/dashboard" component={SuperDashboard} exact />
-        <Route path="/super-admin/products" component={ProductsList} exact />
-        <Route path="/super-admin/product" component={NewProduct} exact />
-        <Route path="/super-admin/category" component={CategorysList} exact />
-        <Route path="/super-admin/category/new" component={NewCategory} exact />
         <Route
-          path="/super-admin/product/:id"
-          component={UpdateProduct}
+          path="/super-admin/products"
+          component={SuperProductsList}
           exact
         />
-        <Route path="/super-admin/orders" component={OrdersList} exact />
+        <Route path="/super-admin/product" component={SuperNewProduct} exact />
+        <Route
+          path="/super-admin/category"
+          component={SuperCategorysList}
+          exact
+        />
+        <Route
+          path="/super-admin/category/new"
+          component={SuperNewCategory}
+          exact
+        />
+        <Route
+          path="/super-admin/product/:id"
+          component={SuperUpdateProduct}
+          exact
+        />
+        <Route path="/super-admin/orders" component={SuperOrdersList} exact />
         <Route
           path="/super-admin/order/:id"
           Route
-          component={ProcessOrder}
+          component={SuperProcessOrder}
           exact
         />
-        <Route path="/super-admin/users" component={UsersList} exact />
-        <Route path="/super-admin/user/:id" component={UpdateUser} exact />
-        <Route path="/super-admin/reviews" component={ProductReviews} exact />
+        <Route path="/super-admin/users" component={SuperUsersList} exact />
+        <Route path="/super-admin/user/:id" component={SuperUpdateUser} exact />
+        <Route
+          path="/super-admin/reviews"
+          component={SuperProductReviews}
+          exact
+        />
         <Footer />
       </div>
     </Router>
