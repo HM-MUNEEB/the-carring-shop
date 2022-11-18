@@ -39,7 +39,10 @@ const SuperLogin = () => {
       if (isAuthenticated) {
         logoutHandler();
       }
+      alert.success("Logged in to super-admin!");
       history.push("super-admin/dashboard");
+    } else {
+      alert.error("Wrong Email or password");
     }
     // dispatch(login(email, password));
   };
