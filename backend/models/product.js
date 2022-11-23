@@ -47,7 +47,7 @@ const productSchema = new mongoose.Schema({
   numOfReviews: {
     type: Number,
     default: 0,
-  },
+  }, //Status for approvel (False or not approved && True for approved product)
   status: {
     type: Boolean,
     default: false,
