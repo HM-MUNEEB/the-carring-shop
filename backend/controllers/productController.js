@@ -66,6 +66,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
   const resPerPage = 12;
   const productsCount = await Product.countDocuments();
 
+  //get all the products which are approved (status True)
   const apiFeatures = new APIFeatures(Product.find(), req.query)
     .search()
     .filter();
