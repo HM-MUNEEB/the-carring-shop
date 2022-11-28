@@ -10,11 +10,13 @@ module.exports = {
       await db.collection("superadmins").insertOne({
         name: "Zain hashmi",
         email: "zainhashmi551@gmail.com",
+        role: "super-admin",
         password: await bcrypt.hash("zainAdmin", 10),
       });
       await db.collection("superadmins").insertOne({
         name: "admin",
         email: "admin@gmail.com",
+        role: "super-admin",
         password: await bcrypt.hash("admin1234", 10),
       });
       console.log("The user 'Zain hashmi' is added.");
@@ -28,7 +30,7 @@ module.exports = {
     // Example:
     // await db.collection('albums').updateOne({artist: 'The Beatles'}, {$set: {blacklisted: false}});
     try {
-      await db.collection("superAdmin").deleteMany();
+      await db.collection("superadmins").deleteMany();
       console.log("All super admin users are deleted");
     } catch (error) {
       console.log(error.message);
