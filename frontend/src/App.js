@@ -40,6 +40,7 @@ import NewCategory from "./components/admin/NewCategory";
 import CategorysList from "./components/admin/CatagoryList";
 
 import ProtectedRoute from "./components/route/ProtectedRoute";
+import SuperProtectedRoute from "./components/route/SuperProtectedRoute";
 import { loadUser } from "./actions/userActions";
 import store from "./store";
 import axios from "axios";
@@ -189,38 +190,69 @@ function App() {
         {/* super-admin routes */}
 
         <Route path="/super-admin" component={SuperLogin} exact />
-        <Route path="/super-admin/dashboard" component={SuperDashboard} exact />
-        <Route
+        <SuperProtectedRoute
+          isAdmin={true}
+          path="/super-admin/dashboard"
+          component={SuperDashboard}
+          exact
+        />
+        <SuperProtectedRoute
+          isAdmin={true}
           path="/super-admin/products"
           component={SuperProductsList}
           exact
         />
-        <Route path="/super-admin/product" component={SuperNewProduct} exact />
-        <Route
+        <SuperProtectedRoute
+          isAdmin={true}
+          path="/super-admin/product"
+          component={SuperNewProduct}
+          exact
+        />
+        <SuperProtectedRoute
+          isAdmin={true}
           path="/super-admin/category"
           component={SuperCategorysList}
           exact
         />
-        <Route
+        <SuperProtectedRoute
+          isAdmin={true}
           path="/super-admin/category/new"
           component={SuperNewCategory}
           exact
         />
-        <Route
+        <SuperProtectedRoute
+          isAdmin={true}
           path="/super-admin/product/:id"
           component={SuperUpdateProduct}
           exact
         />
-        <Route path="/super-admin/orders" component={SuperOrdersList} exact />
-        <Route
+        <SuperProtectedRoute
+          isAdmin={true}
+          path="/super-admin/orders"
+          component={SuperOrdersList}
+          exact
+        />
+        <SuperProtectedRoute
+          isAdmin={true}
           path="/super-admin/order/:id"
           Route
           component={SuperProcessOrder}
           exact
         />
-        <Route path="/super-admin/users" component={SuperUsersList} exact />
-        <Route path="/super-admin/user/:id" component={SuperUpdateUser} exact />
-        <Route
+        <SuperProtectedRoute
+          isAdmin={true}
+          path="/super-admin/users"
+          component={SuperUsersList}
+          exact
+        />
+        <SuperProtectedRoute
+          isAdmin={true}
+          path="/super-admin/user/:id"
+          component={SuperUpdateUser}
+          exact
+        />
+        <SuperProtectedRoute
+          isAdmin={true}
           path="/super-admin/reviews"
           component={SuperProductReviews}
           exact
