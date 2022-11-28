@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData";
 
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { login, clearErrors, logout } from "../../actions/userActions";
+import { Superlogin, clearErrors, logout } from "../../actions/userActions";
 
 const SuperLogin = () => {
   const [email, setEmail] = useState("");
@@ -19,32 +19,23 @@ const SuperLogin = () => {
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.auth
   );
+  const location = useLocation();
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     alert.success("Logged in successfullys");
-  //     //   history.push(redirect);
-  //   }
-
-  //   if (error) {
-  //     alert.error(error);
-  //     dispatch(clearErrors());
-  //   }
-  // }, [dispatch, alert, isAuthenticated, error, history]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      alert.success("Logged in to super-admin!");
+      history.push("super-admin/dashboard");
+    }
+    if (error) {
+      alert.error("Wrong Email or password");
+      dispatch(clearErrors());
+    }
+  }, [dispatch, alert, isAuthenticated, error, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    if (email == "admin@gmail.com" && password == "admin") {
-      if (isAuthenticated) {
-        logoutHandler();
-      }
-      alert.success("Logged in to super-admin!");
-      history.push("super-admin/dashboard");
-    } else {
-      alert.error("Wrong Email or password");
-    }
-    // dispatch(login(email, password));
+    dispatch(Superlogin(email, password));
   };
   const logoutHandler = () => {
     dispatch(logout());
