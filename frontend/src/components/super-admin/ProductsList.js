@@ -95,10 +95,7 @@ const SuperProductsList = ({ history }) => {
             >
               <i className="fa fa-pencil"></i>
             </Link>
-            <button
-              className="btn btn-warning py-1 px-2 ml-2"
-              onClick={() => setApprovedHandler(product._id)}
-            >
+            <button className="btn btn-warning py-1 px-2 ml-2">
               <i className="fa fa-eye"></i>
             </button>
             <button
@@ -117,9 +114,6 @@ const SuperProductsList = ({ history }) => {
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
-  };
-  const setApprovedHandler = (id) => {
-    console.log("Item set as approved!");
   };
 
   return (
