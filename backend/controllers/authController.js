@@ -64,6 +64,34 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+// Super Admin Route
+
+exports.superAdminLogin = catchAsyncErrors(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  // Checks if email and password is entered by user
+  if (!email || !password) {
+    return next(new ErrorHandler("Please enter email & password", 400));
+  }
+
+  // Finding user in database
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user) {
+    return next(new ErrorHandler("Invalid Email or Password", 401));
+  }
+
+  // Checks if password is correct or not
+  const isPasswordMatched = await user.comparePassword(password);
+
+  if (!isPasswordMatched) {
+    return next(new ErrorHandler("Invalid Email or Password", 401));
+  } else {
+    console.log("User is logged in!!!");
+  }
+  sendToken(user, 200, res);
+});
+
 // Forgot Password   =>  /api/v1/password/forgot
 exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
