@@ -90,9 +90,17 @@ const Header = () => {
                           Menu
                         </a>
                         <ul className="submenu-home1">
-                          {user && user.role !== "admin" ? (
+                          {user &&
+                          user.role !== "admin" &&
+                          user.role !== "super-admin" ? (
                             <li>
                               <Link to="/orders/me">Orders</Link>
+                            </li>
+                          ) : user.role == "super-admin" ? (
+                            <li>
+                              <Link to="/super-admin/dashboard">
+                                Super Dashboard
+                              </Link>
                             </li>
                           ) : (
                             <li>

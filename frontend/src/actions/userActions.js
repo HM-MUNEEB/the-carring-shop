@@ -280,7 +280,7 @@ export const allUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
 
-    const { data } = await axios.get("/api/v1/admin/users");
+    const { data } = await axios.get("/api/v1/super-admin/users");
 
     dispatch({
       type: ALL_USERS_SUCCESS,
