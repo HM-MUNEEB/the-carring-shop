@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-
+const SuperAdmin = require("../models/super-admin");
 module.exports = {
   async up(db, client) {
     // TODO write your migration here.
@@ -7,7 +7,7 @@ module.exports = {
     // Example:
     // await db.collection('albums').updateOne({artist: 'The Beatles'}, {$set: {blacklisted: true}});
     try {
-      await db.collection("superAdmin").insertOne({
+      await db.collection("super-admin").insertOne({
         name: "Zain hashmi",
         email: "zainhashmi551@gmail.com",
         password: await bcrypt.hash("zainAdmin", 10),
