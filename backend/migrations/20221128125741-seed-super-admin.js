@@ -7,10 +7,15 @@ module.exports = {
     // Example:
     // await db.collection('albums').updateOne({artist: 'The Beatles'}, {$set: {blacklisted: true}});
     try {
-      await db.collection("super-admin").insertOne({
+      await db.collection("superadmins").insertOne({
         name: "Zain hashmi",
         email: "zainhashmi551@gmail.com",
         password: await bcrypt.hash("zainAdmin", 10),
+      });
+      await db.collection("superadmins").insertOne({
+        name: "admin",
+        email: "admin@gmail.com",
+        password: await bcrypt.hash("admin1234", 10),
       });
       console.log("The user 'Zain hashmi' is added.");
     } catch (error) {

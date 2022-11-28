@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const SuperAdmin = require("../models/super-admin");
 
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
@@ -68,6 +69,8 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
 exports.superAdminLogin = catchAsyncErrors(async (req, res, next) => {
   const { email, password } = req.body;
+  console.log("Email:", email);
+  console.log("Password:", password);
 
   // Checks if email and password is entered by user
   if (!email || !password) {
@@ -75,21 +78,21 @@ exports.superAdminLogin = catchAsyncErrors(async (req, res, next) => {
   }
 
   // Finding user in database
-  const user = await User.findOne({ email }).select("+password");
+  const SuperUser = await SuperAdmin.findOne({ email }).select("+password");
 
-  if (!user) {
+  if (!SuperUser) {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
 
   // Checks if password is correct or not
-  const isPasswordMatched = await user.comparePassword(password);
+  const isPasswordMatched = await SuperUser.comparePassword(password);
 
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   } else {
     console.log("User is logged in!!!");
   }
-  sendToken(user, 200, res);
+  sendToken(SuperUser, 200, res);
 });
 
 // Forgot Password   =>  /api/v1/password/forgot
