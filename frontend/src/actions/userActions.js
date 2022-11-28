@@ -38,6 +38,39 @@ import {
   CLEAR_ERRORS,
 } from "../constants/userConstants";
 
+// Super-admin login
+export const Superlogin = (email, password) => async (dispatch) => {
+  try {
+    dispatch({ type: LOGIN_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.post(
+      "/api/v1/Superlogin",
+      { email, password },
+      config
+    );
+
+    console.log("User information at login:", data.user);
+
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    console.log("Error At Login:", error.message);
+
+    dispatch({
+      type: LOGIN_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // Login
 export const login = (email, password) => async (dispatch) => {
   try {
