@@ -15,6 +15,7 @@ const {
   updateUser,
   deleteUser,
   superAdminLogin,
+  updateUserStatus,
 } = require("../controllers/authController");
 
 const {

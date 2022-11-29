@@ -12,7 +12,7 @@ import {
   allUsers,
   deleteUser,
   clearErrors,
-  updateUserStatus,
+  updateUserStatusAction,
 } from "../../actions/userActions";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
@@ -42,7 +42,8 @@ const SuperUsersList = ({ history }) => {
     dispatch(deleteUser(id));
   };
   const updateUserStatus = (id) => {
-    dispatch(updateUserStatus(id, "approved"));
+    dispatch(updateUserStatusAction(id, { status: "approved" }));
+    dispatch(allUsers());
   };
 
   const setUsers = () => {

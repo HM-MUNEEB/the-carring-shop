@@ -36,6 +36,9 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   CLEAR_ERRORS,
+  STATUS_UPDATE_FAIL,
+  STATUS_UPDATE_REQUEST,
+  STATUS_UPDATE_SUCCESS,
 } from "../constants/userConstants";
 
 // Super-admin login
@@ -296,9 +299,9 @@ export const allUsers = () => async (dispatch) => {
 
 // Action to update user status
 
-export const updateUserStatus = (id, status) => async (dispatch) => {
+export const updateUserStatusAction = (id, status) => async (dispatch) => {
   try {
-    dispatch({ type: UPDATE_USER_REQUEST });
+    dispatch({ type: STATUS_UPDATE_REQUEST });
 
     const config = {
       headers: {
@@ -313,12 +316,12 @@ export const updateUserStatus = (id, status) => async (dispatch) => {
     );
 
     dispatch({
-      type: UPDATE_USER_SUCCESS,
+      type: STATUS_UPDATE_SUCCESS,
       payload: data.success,
     });
   } catch (error) {
     dispatch({
-      type: ALL_USERS_FAIL,
+      type: STATUS_UPDATE_FAIL,
       payload: error.response.data.message,
     });
   }

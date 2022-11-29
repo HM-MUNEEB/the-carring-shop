@@ -96,6 +96,8 @@ exports.superAdminLogin = catchAsyncErrors(async (req, res, next) => {
   sendToken(SuperUser, 200, res);
 });
 
+//Update user status - super - admin
+
 exports.updateUserStatus = catchAsyncErrors(async (req, res, next) => {
   let user;
   try {
@@ -109,11 +111,17 @@ exports.updateUserStatus = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("User not found", 404));
   }
   try {
-    user = await user.findByIdAndUpdate(req.params.id, req.body, {
+    user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
       useFindAndModify: false,
     });
+    console.log(
+      "Sucessfully updated status to ",
+      req.body,
+      " of ",
+      req.params.id
+    );
   } catch (error) {
     console.log(error);
   }
