@@ -8,6 +8,7 @@ const sendEmail = require("../utils/sendEmail");
 
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+const user = require("../models/user");
 
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -93,6 +94,29 @@ exports.superAdminLogin = catchAsyncErrors(async (req, res, next) => {
     console.log("User is logged in!!!");
   }
   sendToken(SuperUser, 200, res);
+});
+
+exports.updateUserStatus = catchAsyncErrors(async (req, res, next) => {
+  let user;
+  try {
+    user = await User.findById(req.params.id);
+  } catch (error) {
+    console.log("Error at location user: ", error);
+    return next(new ErrorHandler("Error at locating user", 500));
+  }
+
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+  try {
+    user = await user.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+      useFindAndModify: false,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // Forgot Password   =>  /api/v1/password/forgot

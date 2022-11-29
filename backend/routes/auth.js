@@ -46,4 +46,12 @@ router
   .put(isAuthenticatedSuperAdmin, authorizeRoles("super-admin"), updateUser)
   .delete(isAuthenticatedSuperAdmin, authorizeRoles("super-admin"), deleteUser);
 
+router
+  .route("/super-admin/update-user-status/:id")
+  .put(
+    isAuthenticatedSuperAdmin,
+    authorizeRoles("super-admin"),
+    updateUserStatus
+  );
+
 module.exports = router;
