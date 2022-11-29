@@ -41,9 +41,17 @@ const SuperUsersList = ({ history }) => {
   const deleteUserHandler = (id) => {
     dispatch(deleteUser(id));
   };
-  const updateUserStatus = (id) => {
-    dispatch(updateUserStatusAction(id, { status: "approved" }));
-    dispatch(allUsers());
+  const updateUserStatus = (id, status) => {
+    var str =
+      "Are you sure you want to set the user '" +
+      id +
+      "' to " +
+      status +
+      " status?";
+    if (window.confirm(str)) {
+      dispatch(updateUserStatusAction(id, { status }));
+      dispatch(allUsers());
+    }
   };
 
   const setUsers = () => {
@@ -100,7 +108,12 @@ const SuperUsersList = ({ history }) => {
             </Link>
             <button
               className="btn btn-warning py-1 px-2 ml-2"
-              onClick={() => updateUserStatus(user._id)}
+              onClick={() =>
+                updateUserStatus(
+                  user._id,
+                  user.status == "not-approved" ? "approved" : "not-approved"
+                )
+              }
             >
               <i className="fa fa-shield"></i>
             </button>
