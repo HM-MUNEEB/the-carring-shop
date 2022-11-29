@@ -275,7 +275,7 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-// Get all users
+// Get all users - super-admin
 export const allUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
@@ -294,6 +294,35 @@ export const allUsers = () => async (dispatch) => {
   }
 };
 
+// Action to update user status
+
+export const updateUserStatus = (id, status) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_USER_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/v1/super-admin/update-user-status/${id}`,
+      status,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: ALL_USERS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 // Update user - ADMIN
 export const updateUser = (id, userData) => async (dispatch) => {
   try {

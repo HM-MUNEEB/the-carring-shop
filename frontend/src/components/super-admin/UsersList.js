@@ -8,7 +8,12 @@ import Sidebar from "./Sidebar";
 
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { allUsers, deleteUser, clearErrors } from "../../actions/userActions";
+import {
+  allUsers,
+  deleteUser,
+  clearErrors,
+  updateUserStatus,
+} from "../../actions/userActions";
 import { DELETE_USER_RESET } from "../../constants/userConstants";
 
 const SuperUsersList = ({ history }) => {
@@ -35,6 +40,9 @@ const SuperUsersList = ({ history }) => {
 
   const deleteUserHandler = (id) => {
     dispatch(deleteUser(id));
+  };
+  const updateUserStatus = (id) => {
+    dispatch(updateUserStatus(id, "approved"));
   };
 
   const setUsers = () => {
@@ -91,7 +99,7 @@ const SuperUsersList = ({ history }) => {
             </Link>
             <button
               className="btn btn-warning py-1 px-2 ml-2"
-              onClick={() => deleteUserHandler(user._id)}
+              onClick={() => updateUserStatus(user._id)}
             >
               <i className="fa fa-shield"></i>
             </button>
