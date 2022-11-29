@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  updateProduct,
+  superUpdateProduct,
   getProductDetails,
   clearErrors,
 } from "../../actions/productActions";
@@ -105,7 +105,7 @@ const SuperUpdateProduct = ({ match, history }) => {
       formData.append("images", image);
     });
 
-    dispatch(updateProduct(product._id, formData));
+    dispatch(superUpdateProduct(product._id, formData));
   };
 
   const onChange = (e) => {

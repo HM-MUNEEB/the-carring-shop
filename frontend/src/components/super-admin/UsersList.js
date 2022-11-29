@@ -61,6 +61,11 @@ const SuperUsersList = ({ history }) => {
           sort: "asc",
         },
         {
+          label: "Status",
+          field: "status",
+          sort: "asc",
+        },
+        {
           label: "Actions",
           field: "actions",
         },
@@ -74,6 +79,7 @@ const SuperUsersList = ({ history }) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        status: user.status || "not-approved",
 
         actions: (
           <Fragment>
@@ -83,6 +89,12 @@ const SuperUsersList = ({ history }) => {
             >
               <i className="fa fa-pencil"></i>
             </Link>
+            <button
+              className="btn btn-warning py-1 px-2 ml-2"
+              onClick={() => deleteUserHandler(user._id)}
+            >
+              <i className="fa fa-shield"></i>
+            </button>
             <button
               className="btn btn-danger py-1 px-2 ml-2"
               onClick={() => deleteUserHandler(user._id)}

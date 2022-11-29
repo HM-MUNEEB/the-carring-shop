@@ -10,7 +10,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAdminProducts,
-  deleteProduct,
+  superDeleteProduct,
   clearErrors,
 } from "../../actions/productActions";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
@@ -115,7 +115,7 @@ const SuperProductsList = ({ history }) => {
   };
 
   const deleteProductHandler = (id) => {
-    dispatch(deleteProduct(id));
+    dispatch(superDeleteProduct(id));
   };
 
   return (
