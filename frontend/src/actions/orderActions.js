@@ -103,6 +103,25 @@ export const allOrders = () => async (dispatch) => {
   }
 };
 
+// Get all orders - SUPER ADMIN
+export const superAllOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_ORDERS_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/super-admin/orders`);
+
+    dispatch({
+      type: ALL_ORDERS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ALL_ORDERS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // update order
 export const updateOrder = (id, orderData) => async (dispatch) => {
   try {
@@ -132,12 +151,60 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
   }
 };
 
+// Super update order
+export const superUpdateOrder = (id, orderData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_ORDER_REQUEST });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const { data } = await axios.put(
+      `/api/v1/super-admin/order/${id}`,
+      orderData,
+      config
+    );
+
+    dispatch({
+      type: UPDATE_ORDER_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_ORDER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // Delete order
 export const deleteOrder = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ORDER_REQUEST });
 
     const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
+
+    dispatch({
+      type: DELETE_ORDER_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_ORDER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Super Delete order
+export const superDeleteOrder = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_ORDER_REQUEST });
+
+    const { data } = await axios.delete(`/api/v1/super-admin/order/${id}`);
 
     dispatch({
       type: DELETE_ORDER_SUCCESS,

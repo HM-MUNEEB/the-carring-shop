@@ -9,8 +9,8 @@ import Sidebar from "./Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  allOrders,
-  deleteOrder,
+  superAllOrders,
+  superDeleteOrder,
   clearErrors,
 } from "../../actions/orderActions";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
@@ -23,7 +23,7 @@ const SuperOrdersList = ({ history }) => {
   const { isDeleted } = useSelector((state) => state.order);
 
   useEffect(() => {
-    dispatch(allOrders());
+    dispatch(superAllOrders());
 
     if (error) {
       alert.error(error);
@@ -38,7 +38,7 @@ const SuperOrdersList = ({ history }) => {
   }, [dispatch, alert, error, isDeleted, history]);
 
   const deleteOrderHandler = (id) => {
-    dispatch(deleteOrder(id));
+    dispatch(superDeleteOrder(id));
   };
 
   const setOrders = () => {
@@ -72,7 +72,7 @@ const SuperOrdersList = ({ history }) => {
       rows: [],
     };
 
-    orders.forEach((order) => {
+    orders?.forEach((order) => {
       data.rows.push({
         id: order._id,
         numofItems: order.orderItems.length,

@@ -95,7 +95,7 @@ const SuperDashboard = () => {
                     </div>
                     <Link
                       className="card-footer text-white clearfix small z-1"
-                      to="/admin/orders"
+                      to="/super-admin/orders"
                     >
                       <span className="float-left">View Details</span>
                       <span className="float-right">
@@ -115,7 +115,7 @@ const SuperDashboard = () => {
                     </div>
                     <Link
                       className="card-footer text-white clearfix small z-1"
-                      to="/admin/users"
+                      to="/super-admin/users"
                     >
                       <span className="float-left">View Details</span>
                       <span className="float-right">
