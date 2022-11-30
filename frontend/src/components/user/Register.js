@@ -227,8 +227,7 @@ const Register = () => {
               <button
                 className="primary--btn login-btn"
                 type="submit"
-
-                // disabled={loading ? true : false}
+                disabled={loading ? true : false}
               >
                 CREATE AN ACCOUNT
               </button>

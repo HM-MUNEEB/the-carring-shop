@@ -6,27 +6,27 @@ const cloudinary = require("cloudinary");
 
 // Create new genere   =>   /api/v1/admin/category/new
 exports.newCategory = catchAsyncErrors(async (req, res, next) => {
-  // let images = [];
-  // if (typeof req.body.images === "string") {
-  //   images.push(req.body.images);
-  // } else {
-  //   images = req.body.images;
-  // }
+  let images = [];
+  if (typeof req.body.images === "string") {
+    images.push(req.body.images);
+  } else {
+    images = req.body.images;
+  }
 
-  // let imagesLinks = [];
+  let imagesLinks = [];
 
-  // for (let i = 0; i < images.length; i++) {
-  //   const result = await cloudinary.v2.uploader.upload(images[i], {
-  //     folder: "category",
-  //   });
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "category",
+    });
 
-  //   imagesLinks.push({
-  //     public_id: result.public_id,
-  //     url: result.secure_url,
-  //   });
-  // }
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
+  }
 
-  // req.body.images = imagesLinks;
+  req.body.images = imagesLinks;
 
   const category = await Category.create(req.body);
   if (!category) {
@@ -57,7 +57,11 @@ exports.deleteCategory = catchAsyncErrors(async (req, res, next) => {
   }
 
   await category.remove();
-
+  for (let i = 0; i < product.images.length; i++) {
+    const result = await cloudinary.v2.uploader.destroy(
+      category.images[i].public_id
+    );
+  }
   res.status(200).json({
     success: true,
     message: "Product is deleted.",
