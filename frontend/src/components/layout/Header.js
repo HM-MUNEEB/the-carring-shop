@@ -172,8 +172,8 @@ const Header = () => {
                                 </Link>
                                 <ul className="submenu-home1">
                                   {user &&
-                                  (user.role !== "admin" ||
-                                    user.role != "super-admin") ? (
+                                  user.role !== "admin" &&
+                                  user.role != "super-admin" ? (
                                     <li>
                                       <Link to="/orders/me">Orders</Link>
                                     </li>

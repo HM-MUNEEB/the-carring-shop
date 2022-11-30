@@ -75,7 +75,7 @@ const SuperDashboard = () => {
                     </div>
                     <Link
                       className="card-footer text-white clearfix small z-1"
-                      to="/admin/products"
+                      to="/super-admin/products"
                     >
                       <span className="float-left">View Details</span>
                       <span className="float-right">
