@@ -18,43 +18,23 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     images = req.body.images;
   }
 
-  console.log(images);
-
-  const dir = "../uploads";
-
-  console.log(dir);
-
   let imagesLinks = [];
-  try {
-    console.log(images);
-    for (let i = 0; i < images.length; i++) {
-      // const filePath = dir + "/" + images[i].imageDetails.name;
-      Jimp.read(images[i].image)
-        .then((image) => {
-          return image
-            .quality(60) // set JPEG quality
-            .write("image.jpeg"); // save
-        })
-        .catch((err) => {
-          console.error(err);
-        });
 
-      console.log("File Path: ", filePath);
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "products",
+    });
 
-      imagesLinks.push({
-        url: filePath,
-      });
-    }
-  } catch (error) {
-    console.log(error.message);
+    imagesLinks.push({
+      public_id: result.public_id,
+      url: result.secure_url,
+    });
   }
 
   req.body.images = imagesLinks;
   req.body.user = req.user.id;
 
-  console.log("Got from client: ", req.body);
   const product = await Product.create(req.body);
-
   res.status(201).json({
     success: true,
     product,

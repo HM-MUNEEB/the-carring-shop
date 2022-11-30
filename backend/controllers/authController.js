@@ -12,10 +12,14 @@ const user = require("../models/user");
 
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { name, email, password, isVendor } = req.body;
 
-  // console.log(req.body.avatar);
+  const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
   try {
     // Checks if email and password is entered by user
     if (!email || !password) {
@@ -28,10 +32,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         name,
         email,
         password,
-        //   avatar: {
-        //     public_id: result.public_id,
-        //     url: result.secure_url,
-        //   },
+        avatar: {
+          public_id: result.public_id,
+          url: result.secure_url,
+        },
       });
     } else {
       const { brand_name, brand_application, possible_products } = req.body;
@@ -44,10 +48,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         possible_products,
         role: "admin",
 
-        //   avatar: {
-        //     public_id: result.public_id,
-        //     url: result.secure_url,
-        //   },
+        avatar: {
+          public_id: result.public_id,
+          url: result.secure_url,
+        },
       });
     }
     console.log("User Created!!!");
