@@ -81,7 +81,7 @@ const Header = () => {
                   )}
                 </ul>
               </nav>
-              <nav className="main-nav d-block d-lg-none">
+              {/* <nav className="main-nav d-block d-lg-none">
                 <ul className="d-flex align-items-center">
                   {user ? (
                     <>
@@ -90,22 +90,25 @@ const Header = () => {
                           Menu
                         </a>
                         <ul className="submenu-home1">
-                          {user &&
-                          user.role !== "admin" &&
-                          user.role !== "super-admin" ? (
+                          {user.role != "admin" ? (
                             <li>
                               <Link to="/orders/me">Orders</Link>
                             </li>
-                          ) : user.role == "super-admin" ? (
+                          ) : (
+                            ""
+                          )}
+                          {user.role == "super-admin" ? (
                             <li>
                               <Link to="/super-admin/dashboard">
-                                Super Dashboard
+                                Super Admin Dashboard
                               </Link>
                             </li>
-                          ) : (
+                          ) : user.role == "admin" ? (
                             <li>
                               <Link to="/dashboard">Dashboard</Link>
                             </li>
+                          ) : (
+                            ""
                           )}
 
                           <li>
@@ -129,7 +132,7 @@ const Header = () => {
                     </>
                   )}
                 </ul>
-              </nav>
+              </nav> */}
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-4 ">
               {/* <Link to="/" class="header-1-logo text-center  ">
@@ -173,9 +176,20 @@ const Header = () => {
                                       <Link to="/orders/me">Orders</Link>
                                     </li>
                                   ) : (
+                                    ""
+                                  )}
+                                  {user.role == "super-admin" ? (
+                                    <li>
+                                      <Link to="/super-admin/dashboard">
+                                        Super Admin Dashboard
+                                      </Link>
+                                    </li>
+                                  ) : user.role == "admin" ? (
                                     <li>
                                       <Link to="/dashboard">Dashboard</Link>
                                     </li>
+                                  ) : (
+                                    ""
                                   )}
 
                                   <li>
