@@ -14,6 +14,11 @@ const Register = () => {
     password: "",
   });
 
+  const [isVendor, setIsVendor] = useState(false);
+  const [brandName, setBrandName] = useState("");
+  const [application, setApplication] = useState("");
+  const [productsInfo, setProductsInfo] = useState("");
+
   const { name, email, password } = user;
 
   const [avatar, setAvatar] = useState("");
@@ -49,6 +54,13 @@ const Register = () => {
     formData.set("email", email);
     formData.set("password", password);
     formData.set("avatar", avatar);
+    formData.set("isVendor", isVendor);
+
+    if (isVendor) {
+      formData.set("brand_name", brandName);
+      formData.set("brand_application", email);
+      formData.set("possible_products", productsInfo);
+    }
 
     console.log(formData);
 
@@ -120,6 +132,65 @@ const Register = () => {
               />
             </div>
           </div>
+          <div className="d-flex flex-direction-row justify-content-between align-items-center">
+            <label className="fs-5">Do you want to become a vendor?</label>
+            <input
+              type="checkbox"
+              name="vendor-radio"
+              checked={isVendor}
+              onChange={() => setIsVendor(!isVendor)}
+              style={{
+                height: "1.5rem",
+                width: "1.5rem",
+              }}
+            />
+          </div>
+          {isVendor ? (
+            <>
+              <div className="col-12">
+                <div className="form-inner">
+                  <label htmlFor="brand_field">Brand Name</label>
+                  <input
+                    type="text"
+                    name="brand-name"
+                    placeholder="Your Brand name"
+                    value={brandName}
+                    onChange={(e) => setBrandName(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-12">
+                <div className="form-inner">
+                  <label htmlFor="application_field">Application</label>
+                  <textarea
+                    id="brand-applicaton"
+                    name="application"
+                    rows="4"
+                    cols="50"
+                    placeholder="Please type a detailed application..."
+                    value={application}
+                    onChange={(e) => setApplication(e.target.value)}
+                  ></textarea>
+                </div>
+              </div>
+              <div className="col-12">
+                <div className="form-inner">
+                  <label htmlFor="products_info_filed">Your Products</label>
+                  <textarea
+                    id="products"
+                    name="products-info"
+                    rows=""
+                    cols="50"
+                    placeholder="Please enter all the products that you want to sell..."
+                    value={productsInfo}
+                    onChange={(e) => setProductsInfo(e.target.value)}
+                  ></textarea>
+                </div>
+              </div>
+            </>
+          ) : (
+            ""
+          )}
           <div className="form-group">
             <label htmlFor="avatar_upload">Avatar</label>
             <div className="d-flex align-items-center">
@@ -156,12 +227,10 @@ const Register = () => {
               <button
                 className="primary--btn login-btn"
                 type="submit"
-                style={{ border: "none", background: "none" }}
+
                 // disabled={loading ? true : false}
               >
-                <Link to="" className="primary--btn login-btn">
-                  CREATE AN ACCOUNT
-                </Link>
+                CREATE AN ACCOUNT
               </button>
             </div>
           </div>

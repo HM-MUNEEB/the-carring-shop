@@ -26,6 +26,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "not-approved",
   },
+  brand_name: {
+    type: String,
+    default: "",
+  },
+  brand_application: {
+    type: String,
+    default: "",
+  },
+  possible_products: {
+    type: String,
+    default: "",
+  },
   // avatar: {
   //   public_id: {
   //     type: String,

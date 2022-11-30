@@ -13,7 +13,7 @@ const user = require("../models/user");
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   console.log(req.body);
-  const { name, email, password } = req.body;
+  const { name, email, password, isVendor } = req.body;
 
   // console.log(req.body.avatar);
   try {
@@ -22,16 +22,34 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler("Please enter email & password", 400));
     }
     // console.log("Cloundinary Response: ", result);
+    let user;
+    if (isVendor == "false") {
+      user = await User.create({
+        name,
+        email,
+        password,
+        //   avatar: {
+        //     public_id: result.public_id,
+        //     url: result.secure_url,
+        //   },
+      });
+    } else {
+      const { brand_name, brand_application, possible_products } = req.body;
+      user = await User.create({
+        name,
+        email,
+        password,
+        brand_name,
+        brand_application,
+        possible_products,
+        role: "admin",
 
-    const user = await User.create({
-      name,
-      email,
-      password,
-      //   avatar: {
-      //     public_id: result.public_id,
-      //     url: result.secure_url,
-      //   },
-    });
+        //   avatar: {
+        //     public_id: result.public_id,
+        //     url: result.secure_url,
+        //   },
+      });
+    }
     console.log("User Created!!!");
     sendToken(user, 200, res);
   } catch (error) {
