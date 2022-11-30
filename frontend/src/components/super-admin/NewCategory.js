@@ -36,9 +36,9 @@ const SuperNewCategory = ({ history }) => {
     e.preventDefault();
     const formData = new FormData();
     formData.set("name", name);
-    images.forEach((image) => {
-      formData.append("images", image);
-    });
+    // images.forEach((image) => {
+    //   formData.append("images", image);
+    // });
 
     dispatch(newCategory(formData));
   };

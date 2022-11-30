@@ -36,30 +36,6 @@ const Sidebar = () => {
             </ul>
           </li>
           <li>
-            <a
-              href="#categorySubmenu"
-              data-toggle="collapse"
-              aria-expanded="false"
-              className="dropdown-toggle"
-            >
-              <i className="fa fa-product-hunt"></i> Category
-            </a>
-            <ul className="collapse list-unstyled" id="categorySubmenu">
-              <li>
-                <Link to="/admin/category">
-                  <i className="fa fa-clipboard"></i> All
-                </Link>
-              </li>
-
-              <li>
-                <Link to="/admin/category/new">
-                  <i className="fa fa-plus"></i> Create
-                </Link>
-              </li>
-            </ul>
-          </li>
-
-          <li>
             <Link to="/admin/orders">
               <i className="fa fa-shopping-basket"></i> Orders
             </Link>

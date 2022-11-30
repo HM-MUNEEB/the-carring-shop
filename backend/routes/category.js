@@ -8,7 +8,7 @@ const {
 } = require("../controllers/categoryController");
 const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
 
-router.route("/admin/genres/addgenre").post(newCategory);
+router.route("/super-admin/genres/addgenre").post(newCategory);
 router.route("/genres").get(getCategory);
 router.route("/movies/:genreID").delete(deleteCategory);
 

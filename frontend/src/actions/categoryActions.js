@@ -24,7 +24,7 @@ export const newCategory = (formData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/api/v1/admin/genres/addgenre`,
+      `/api/v1/super-admin/genres/addgenre`,
       formData,
       config
     );

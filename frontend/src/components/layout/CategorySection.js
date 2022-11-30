@@ -24,7 +24,11 @@ const CategorySection = () => {
               >
                 <div class="category-icon">
                   <Link to={`/search/${category?.name}`}>
-                    <img src={category?.images[0]?.url} />
+                    {category?.images[0]?.url ? (
+                      <img src={category?.images[0]?.url} />
+                    ) : (
+                      ""
+                    )}
                   </Link>
                 </div>
                 <h5 class="category-title">

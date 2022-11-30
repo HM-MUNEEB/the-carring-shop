@@ -10,10 +10,12 @@ const categorySchema = new mongoose.Schema({
       public_id: {
         type: String,
         // required: true,s
+        default: "hello",
       },
       url: {
         type: String,
         // required: true,
+        default: "hello",
       },
     },
   ],

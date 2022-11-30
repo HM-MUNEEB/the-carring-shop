@@ -136,10 +136,10 @@ const Header = () => {
                 <img src="/images/header-1-logo.svg" alt="" />
               </Link> */}
             </div>
-            <div className=" col-lg-5 col-md-5 col-sm-8 d-sm-block d-none">
+            <div className=" col-lg-5 col-md-5 col-sm-8 d-sm-block d-none d-flex justify-content-between align-items-center">
               <div className="header-right-area d-flex justify-content-end align-items-center">
                 <div className="header-1-icons">
-                  <ul className="d-flex">
+                  <ul className="d-flex flex-direction-row justify-content-between align-items-center">
                     {isAuthenticated ? (
                       <>
                         <li>
@@ -195,16 +195,23 @@ const Header = () => {
                         </li>
                       </>
                     ) : (
-                      <li>
+                      <li className="mt-4">
                         <Link to="/login">
-                          <i className="fa fa-user mt-3"></i>
+                          <button className="btn btn-outline-dark mr-3">
+                            Vendors Login
+                          </button>
+                        </Link>
+                        <Link to="/super-admin">
+                          <button className="btn btn-outline-primary">
+                            Super-admin Login
+                          </button>
                         </Link>
                       </li>
                     )}
 
                     <li>
                       <Link to="/cart" style={{ textDacoration: "none" }}>
-                        <div className="cart-btn position-relative mt-3">
+                        <div className="cart-btn position-relative mt-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -223,12 +230,12 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-                <div className="header-1-contact d-flex align-items-center">
+                {/* <div className="header-1-contact d-flex align-items-center">
                   <div className="contact-num">
                     <span>Hot Line Number</span>
                     <p>+92 318 1575228</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

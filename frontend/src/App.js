@@ -34,8 +34,6 @@ import UpdateProduct from "./components/admin/UpdateProduct";
 import OrdersList from "./components/admin/OrdersList";
 import ProcessOrder from "./components/admin/ProcessOrder";
 import ProductReviews from "./components/admin/ProductReviews";
-import NewCategory from "./components/admin/NewCategory";
-import CategorysList from "./components/admin/CatagoryList";
 
 import ProtectedRoute from "./components/route/ProtectedRoute";
 import SuperProtectedRoute from "./components/route/SuperProtectedRoute";
@@ -134,18 +132,6 @@ function App() {
           path="/admin/product"
           isAdmin={true}
           component={NewProduct}
-          exact
-        />
-        <ProtectedRoute
-          path="/admin/category"
-          isAdmin={true}
-          component={CategorysList}
-          exact
-        />
-        <ProtectedRoute
-          path="/admin/category/new"
-          isAdmin={true}
-          component={NewCategory}
           exact
         />
         <ProtectedRoute

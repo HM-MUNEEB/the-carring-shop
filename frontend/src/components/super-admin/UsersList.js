@@ -50,7 +50,9 @@ const SuperUsersList = ({ history }) => {
       " status?";
     if (window.confirm(str)) {
       dispatch(updateUserStatusAction(id, { status }));
-      dispatch(allUsers());
+      setTimeout(() => {
+        dispatch(allUsers());
+      }, 1500);
     }
   };
 
