@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment/moment";
 
 const ListReviews = ({ reviews }) => {
   return (
@@ -51,10 +52,7 @@ const ListReviews = ({ reviews }) => {
                                 <div className="header-meta">
                                   <h5>
                                     {review.name}
-                                    <span className="commnt-date">
-                                      {" "}
-                                      - 8th Jan 2021
-                                    </span>
+                                    <span className="commnt-date"> </span>
                                   </h5>
                                   <div class="rating-outer">
                                     <div

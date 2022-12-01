@@ -13,12 +13,12 @@ const Footer = () => {
                   <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                     <div className="single-widget">
                       <div className="footer-title">
-                        <h3>About Buy It</h3>
+                        <h3>About "The Caring Shop"</h3>
                       </div>
                       <div className="footerabout-content">
                         <p>
-                          Buy It Store - Pakistan's first store since 2021. We
-                          sell many Category products on our web-site.
+                          The Caring Shop - Pakistan's first store since 2022.
+                          We sell many Category products on our web-site.
                         </p>
                       </div>
                       <div className="footer-address">
@@ -34,9 +34,9 @@ const Footer = () => {
                           <li>
                             <i className="lar la-envelope"></i>
                             <span>
-                              <Link to="/">Student@uol.com</Link>
+                              <Link to="/">admin@thecaringshop.com</Link>
                               <br />
-                              <Link to="/">info@buyit.com</Link>
+                              <Link to="/">info@thecaringshop.com</Link>
                             </span>
                           </li>
                           <li>
@@ -128,10 +128,7 @@ const Footer = () => {
           <div className="row g-3 copy-right-section align-items-center">
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 text-lg-start text-center">
               <div className="copy-right-area">
-                <p className="copy-text">
-                  Copyright 2022 Buy it | Design By
-                  <Link to="/">UOl Students</Link>
-                </p>
+                <p className="copy-text">Copyright 2022 The Carring Shop</p>
               </div>
             </div>
             <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
