@@ -5,10 +5,6 @@ const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const APIFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
 
-const path = require("path");
-const fs = require("fs");
-const Jimp = require("jimp");
-
 // Create new product   =>   /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
   try {
@@ -18,6 +14,9 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     } else {
       images = req.body.images;
     }
+
+    console.log("Images: ");
+    console.log(images);
 
     let imagesLinks = [];
 
@@ -36,7 +35,8 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
     req.body.user = req.user.id;
 
     const product = await Product.create(req.body);
-    res.status(201).json({
+
+    res.status(200).json({
       success: true,
       product,
     });
