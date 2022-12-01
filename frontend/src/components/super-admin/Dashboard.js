@@ -7,8 +7,8 @@ import Sidebar from "./Sidebar";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { getAdminProducts } from "../../actions/productActions";
-import { allOrders } from "../../actions/orderActions";
+import { superGetAdminProducts } from "../../actions/productActions";
+import { superAllOrders } from "../../actions/orderActions";
 import { allUsers } from "../../actions/userActions";
 
 const SuperDashboard = () => {
@@ -30,8 +30,8 @@ const SuperDashboard = () => {
   });
 
   useEffect(() => {
-    dispatch(getAdminProducts());
-    dispatch(allOrders());
+    dispatch(superGetAdminProducts());
+    dispatch(superAllOrders());
     dispatch(allUsers());
   }, [dispatch]);
 

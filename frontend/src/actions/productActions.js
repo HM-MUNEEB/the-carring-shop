@@ -225,11 +225,30 @@ export const newReview = (reviewData) => async (dispatch) => {
   }
 };
 
+//Get Admin products
 export const getAdminProducts = () => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(`/api/v1/admin/products`);
+
+    dispatch({
+      type: ADMIN_PRODUCTS_SUCCESS,
+      payload: data.products,
+    });
+  } catch (error) {
+    dispatch({
+      type: ADMIN_PRODUCTS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+//Get super-Admin products
+export const superGetAdminProducts = () => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_PRODUCTS_REQUEST });
+
+    const { data } = await axios.get(`/api/v1/super-admin/products`);
 
     dispatch({
       type: ADMIN_PRODUCTS_SUCCESS,

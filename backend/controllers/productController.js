@@ -11,34 +11,39 @@ const Jimp = require("jimp");
 
 // Create new product   =>   /api/v1/admin/product/new
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
-  let images = [];
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
+  try {
+    let images = [];
+    if (typeof req.body.images === "string") {
+      images.push(req.body.images);
+    } else {
+      images = req.body.images;
+    }
 
-  let imagesLinks = [];
+    let imagesLinks = [];
 
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: "products",
+      });
+
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+
+    req.body.images = imagesLinks;
+    req.body.user = req.user.id;
+
+    const product = await Product.create(req.body);
+    res.status(201).json({
+      success: true,
+      product,
     });
-
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
+  } catch (error) {
+    res.status(500).json({ Error: "Product failed to create!" });
+    console.log("Error while creating a new product: ", error);
   }
-
-  req.body.images = imagesLinks;
-  req.body.user = req.user.id;
-
-  const product = await Product.create(req.body);
-  res.status(201).json({
-    success: true,
-    product,
-  });
 });
 
 // Get all products   =>   /api/v1/products?keyword=apple
@@ -69,6 +74,16 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get all products (Admin)  =>   /api/v1/admin/products
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find();
+
+  res.status(200).json({
+    success: true,
+    products,
+  });
+});
+
+// Get all products (Admin)  =>   /api/v1/admin/products
+exports.superGetAdminProducts = catchAsyncErrors(async (req, res, next) => {
   const products = await Product.find();
 
   res.status(200).json({

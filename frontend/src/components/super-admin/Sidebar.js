@@ -30,12 +30,6 @@ const Sidebar = () => {
                   <i className="fa fa-clipboard"></i> All
                 </Link>
               </li>
-
-              <li>
-                <Link to="/super-admin/product">
-                  <i className="fa fa-plus"></i> Create
-                </Link>
-              </li>
             </ul>
           </li>
           <li>

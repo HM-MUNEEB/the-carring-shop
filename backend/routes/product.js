@@ -11,6 +11,7 @@ const {
   createProductReview,
   getProductReviews,
   deleteReview,
+  superGetAdminProducts,
 } = require("../controllers/productController");
 
 const {
@@ -23,6 +24,7 @@ router.route("/products").get(getProducts);
 router.route("/admin/products").get(getAdminProducts);
 router.route("/product/:id").get(getSingleProduct);
 
+router.route("/super-admin/products").get(superGetAdminProducts);
 router
   .route("/admin/product/new")
   .post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);
