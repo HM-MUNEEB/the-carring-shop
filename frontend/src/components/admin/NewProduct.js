@@ -72,17 +72,13 @@ const NewProduct = ({ history }) => {
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagesPreview((oldArray) => [...oldArray, reader.result]);
-          setImages((oldArray) => [
-            ...oldArray,
-            { image: reader.result, imageDetails: file },
-          ]);
+          setImages((oldArray) => [...oldArray, reader.result]);
         }
       };
 
       reader.readAsDataURL(file);
     });
   };
-
   return (
     <Fragment>
       <MetaData title={"New Product"} />

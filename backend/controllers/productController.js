@@ -15,26 +15,28 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
       images = req.body.images;
     }
 
-    console.log("Images: ");
-    console.log(images);
-
     let imagesLinks = [];
 
-    for (let i = 0; i < images.length; i++) {
-      const result = await cloudinary.v2.uploader.upload(images[i], {
-        folder: "products",
-      });
+    try {
+      for (let i = 0; i < images.length; i++) {
+        const result = await cloudinary.v2.uploader.upload(images[i], {
+          folder: "products",
+        });
 
-      imagesLinks.push({
-        public_id: result.public_id,
-        url: result.secure_url,
-      });
+        imagesLinks.push({
+          public_id: result.public_id,
+          url: result.secure_url,
+        });
+      }
+    } catch (error) {
+      console.log("Error at uplaoding products: ", error);
     }
 
     req.body.images = imagesLinks;
     req.body.user = req.user.id;
 
     const product = await Product.create(req.body);
+    console.log("Product Created!");
 
     res.status(200).json({
       success: true,
