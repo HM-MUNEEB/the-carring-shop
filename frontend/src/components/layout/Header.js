@@ -151,11 +151,15 @@ const Header = () => {
                               <li className="menu-item">
                                 <div className="d-flex align-items-center">
                                   <figure className="avatar avatar-nav">
-                                    <img
-                                      src={user.avatar && user.avatar.url}
-                                      alt={user && user.name}
-                                      className="rounded-circle"
-                                    />
+                                    {user.avatar ? (
+                                      <img
+                                        src={user.avatar && user.avatar.url}
+                                        alt={user && user.name}
+                                        className="rounded-circle"
+                                      />
+                                    ) : (
+                                      ""
+                                    )}
                                   </figure>
                                   <Link
                                     to=""
