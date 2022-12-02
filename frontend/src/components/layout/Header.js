@@ -146,30 +146,35 @@ const Header = () => {
                     {isAuthenticated ? (
                       <>
                         <li>
-                          <nav className="main-nav d-none d-lg-block">
+                          <nav className="main-nav d-none d-lg-block mt-2">
                             <ul className="d-flex align-items-center">
                               <li className="menu-item">
-                                <figure className="avatar avatar-nav">
-                                  {/* <img
-                                    src={user.avatar && user.avatar.url}
-                                    alt={user && user.name}
-                                    className="rounded-circle"
-                                  /> */}
-                                </figure>
-                                <Link to="" className="menu-link ">
-                                  {user.name}
-
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    fill="currentColor"
-                                    className="bi bi-caret-down-fill"
-                                    viewBox="0 0 16 16"
+                                <div className="d-flex align-items-center">
+                                  <figure className="avatar avatar-nav">
+                                    <img
+                                      src={user.avatar && user.avatar.url}
+                                      alt={user && user.name}
+                                      className="rounded-circle"
+                                    />
+                                  </figure>
+                                  <Link
+                                    to=""
+                                    className="menu-link d-flex align-items-center mt-2"
                                   >
-                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                  </svg>
-                                </Link>
+                                    <h5>{user.name}</h5>
+
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="20"
+                                      fill="currentColor"
+                                      className="bi bi-caret-down-fill ml-2"
+                                      viewBox="0 0 16 16"
+                                    >
+                                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                    </svg>
+                                  </Link>
+                                </div>
                                 <ul className="submenu-home1">
                                   {user &&
                                   user.role !== "admin" &&
@@ -230,10 +235,10 @@ const Header = () => {
                         <div className="cart-btn position-relative mt-4">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
+                            width="22"
+                            height="22"
                             fill="currentColor"
-                            className="bi bi-minecart"
+                            className="bi bi-minecart mb-2"
                             viewBox="0 0 16 16"
                           >
                             <path d="M4 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM.115 3.18A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H2a.5.5 0 0 1-.491-.408l-1.5-8a.5.5 0 0 1 .106-.411zm.987.82 1.313 7h11.17l1.313-7H1.102z" />
