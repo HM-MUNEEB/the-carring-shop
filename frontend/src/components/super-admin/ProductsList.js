@@ -115,6 +115,8 @@ const SuperProductsList = ({ history }) => {
   };
 
   const deleteProductHandler = (id) => {
+    console.log("Del");
+    dispatch(clearErrors());
     dispatch(superDeleteProduct(id));
   };
 

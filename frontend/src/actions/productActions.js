@@ -110,8 +110,9 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const superDeleteProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_PRODUCT_REQUEST });
-
+    console.log("Delete");
     const { data } = await axios.delete(`/api/v1/super-admin/product/${id}`);
+    console.log(data);
 
     dispatch({
       type: DELETE_PRODUCT_SUCCESS,
