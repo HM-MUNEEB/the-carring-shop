@@ -48,7 +48,11 @@ const Login = () => {
           <MetaData title={"Login"} />
 
           <h3 className="title-30 text-center mb-35">Login Your Account</h3>
-          <form className="login-form" onSubmit={submitHandler}>
+          <form
+            className="login-form"
+            encType="appilcation/json"
+            onSubmit={submitHandler}
+          >
             <div className="row">
               <div className="col-12">
                 <div className="form-inner">
@@ -87,14 +91,9 @@ const Login = () => {
                   <button
                     className="primary--btn login-btn"
                     type="submit"
-                    style={{ border: "none", background: "none" }}
+                    disabled={loading ? true : false}
                   >
-                    <Link
-                      to=""
-                      className="primary--btn login-btn text-uppercase"
-                    >
-                      login ACCOUNT
-                    </Link>
+                    login ACCOUNT
                   </button>
                 </div>
               </div>

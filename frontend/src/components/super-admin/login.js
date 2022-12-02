@@ -94,14 +94,8 @@ const SuperLogin = () => {
                 </div>
                 <div className="col-4">
                   <div className="form-inner d-flex flex-column align-items-center">
-                    <button
-                      className="primary--btn login-btn"
-                      type="submit"
-                      style={{ border: "none", background: "none" }}
-                    >
-                      <Link className="primary--btn login-btn text-uppercase">
-                        login Super-admin
-                      </Link>
+                    <button className="primary--btn login-btn" type="submit">
+                      login Super-admin
                     </button>
                   </div>
                 </div>
