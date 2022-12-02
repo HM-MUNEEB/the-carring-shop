@@ -111,7 +111,7 @@ const SuperUpdateUser = ({ history, match }) => {
                     onChange={(e) => setRole(e.target.value)}
                   >
                     <option value="user">user</option>
-                    <option value="super-admin">super-admin</option>
+                    <option value="super-admin">admin</option>
                   </select>
                 </div>
 

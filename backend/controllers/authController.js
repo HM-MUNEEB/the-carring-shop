@@ -46,8 +46,6 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         brand_name,
         brand_application,
         possible_products,
-        role: "admin",
-
         avatar: {
           public_id: result.public_id,
           url: result.secure_url,

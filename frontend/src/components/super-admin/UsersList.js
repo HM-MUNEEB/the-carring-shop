@@ -46,10 +46,10 @@ const SuperUsersList = ({ history }) => {
       "Are you sure you want to set the user '" +
       id +
       "' to " +
-      status +
+      status.status +
       " status?";
     if (window.confirm(str)) {
-      dispatch(updateUserStatusAction(id, { status }));
+      dispatch(updateUserStatusAction(id, status));
       setTimeout(() => {
         dispatch(allUsers());
       }, 1500);
@@ -111,10 +111,12 @@ const SuperUsersList = ({ history }) => {
             <button
               className="btn btn-warning py-1 px-2 ml-2"
               onClick={() =>
-                updateUserStatus(
-                  user._id,
-                  user.status == "not-approved" ? "approved" : "not-approved"
-                )
+                updateUserStatus(user._id, {
+                  status: (user.status = "not-approved"
+                    ? "approved"
+                    : "not-approved"),
+                  role: (user.state = "user" ? "admin" : "user"),
+                })
               }
             >
               <i className="fa fa-shield"></i>
