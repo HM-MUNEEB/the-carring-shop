@@ -68,10 +68,6 @@ const SuperProductsList = ({ history }) => {
           sort: "asc",
         },
         {
-          label: "Status",
-          field: "status",
-        },
-        {
           label: "Actions",
           field: "actions",
         },
@@ -86,7 +82,6 @@ const SuperProductsList = ({ history }) => {
         name: product.name,
         price: `$${product.price}`,
         stock: product.stock,
-        status: product.status === false ? "Not Approved" : "Approved",
         actions: (
           <Fragment>
             <Link
