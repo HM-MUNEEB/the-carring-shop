@@ -222,13 +222,8 @@ const Header = () => {
                     ) : (
                       <li className="mt-4">
                         <Link to="/login">
-                          <button className="btn btn-outline-dark mr-3">
+                          <button className="primary--btn login-btn mr-3">
                             Vendors Login
-                          </button>
-                        </Link>
-                        <Link to="/super-admin">
-                          <button className="btn btn-outline-primary">
-                            Super-admin Login
                           </button>
                         </Link>
                       </li>
