@@ -8,6 +8,8 @@ import { logout } from "../../actions/userActions";
 import "../../App.css";
 import { getCategory } from "../../actions/categoryActions";
 
+import { uid } from "uid";
+
 const Header = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -23,6 +25,10 @@ const Header = () => {
   const logoutHandler = () => {
     dispatch(logout());
     alert.success("Logged out successfully.");
+  };
+
+  const generateKey = () => {
+    return uid(16);
   };
 
   return (
@@ -57,7 +63,7 @@ const Header = () => {
                                   </Link>
                                   <ul className="submenu-home1">
                                     {category?.map((category) => (
-                                      <li>
+                                      <li key={generateKey()}>
                                         <Link to={`/search/${category.name}`}>
                                           {category.name}
                                         </Link>
