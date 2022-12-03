@@ -55,6 +55,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   //change the query here to only get approved products
   //get all the products which are approved (status True)
+  console.log("At products fetch!");
   const apiFeatures = new APIFeatures(Product.find(), req.query)
     .search()
     .filter();
@@ -64,6 +65,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   apiFeatures.pagination(resPerPage);
   products = await apiFeatures.query;
+  console.log("At products fetch: ", products);
 
   res.status(200).json({
     success: true,

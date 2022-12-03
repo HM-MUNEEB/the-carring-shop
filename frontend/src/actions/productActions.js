@@ -46,7 +46,10 @@ export const getProducts =
         link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}&ratings[gte]=${rating}`;
       }
 
+      console.log("API hit at search:", link);
+
       const { data } = await axios.get(link);
+      console.log(data);
 
       dispatch({
         type: ALL_PRODUCTS_SUCCESS,
