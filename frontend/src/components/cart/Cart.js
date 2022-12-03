@@ -7,6 +7,8 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartActions";
 
+import { uid } from "uid";
+
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
 
@@ -36,6 +38,9 @@ const Cart = ({ history }) => {
     history.push("/login?redirect=shipping");
   };
 
+  const generateKey = () => {
+    return uid(16);
+  };
   return (
     <Fragment>
       <MetaData title={"Your Cart"} />
@@ -50,7 +55,7 @@ const Cart = ({ history }) => {
           <div className="row d-flex justify-content-between">
             <div className="col-12 col-lg-8">
               {cartItems.map((item) => (
-                <Fragment>
+                <Fragment key={generateKey()}>
                   <hr />
 
                   <div className="cart-item" key={item.product}>
