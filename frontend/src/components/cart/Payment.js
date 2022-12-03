@@ -82,7 +82,6 @@ const Payment = ({ history }) => {
       if (!stripe || !elements) {
         return;
       }
-
       const result = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardNumberElement),
@@ -95,6 +94,7 @@ const Payment = ({ history }) => {
 
       if (result.error) {
         alert.error(result.error.message);
+        console.log(result.error);
         document.querySelector("#pay_btn").disabled = false;
       } else {
         // The payment is processed or not
