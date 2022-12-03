@@ -147,32 +147,6 @@ const Home = ({ match }) => {
                       </div>
 
                       <hr className="my-3" />
-
-                      <div className="mt-5">
-                        <h4 className="mb-3">Ratings</h4>
-
-                        <ul className="pl-0">
-                          {[5, 4, 3, 2, 1].map((star) => (
-                            <li
-                              style={{
-                                cursor: "pointer",
-                                listStyleType: "none",
-                              }}
-                              key={star}
-                              onClick={() => setRating(star)}
-                            >
-                              <div className="rating-outer">
-                                <div
-                                  className="rating-inner"
-                                  style={{
-                                    width: `${star * 20}%`,
-                                  }}
-                                ></div>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                     </div>
                   </div>
 

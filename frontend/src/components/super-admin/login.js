@@ -84,15 +84,7 @@ const SuperLogin = () => {
                     />
                   </div>
                 </div>
-                <div className="col-4">
-                  <div className="form-inner d-flex justify-content-between">
-                    <label></label>
-                    <Link to="/password/forgot" className="forget-password">
-                      Forgotten password?
-                    </Link>
-                  </div>
-                </div>
-                <div className="col-4">
+                <div className="col-4 mt-4">
                   <div className="form-inner d-flex flex-column align-items-center">
                     <button className="primary--btn login-btn" type="submit">
                       login Super-admin
