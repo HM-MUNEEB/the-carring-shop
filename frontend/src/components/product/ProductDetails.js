@@ -183,7 +183,7 @@ const ProductDetails = ({ match }) => {
                     </ul>
                     <h3 className="eg-title1 mb-25">{product.name}</h3>
                     <h4 className="price-title border--bottom2 mb-15">
-                      <span>PKR </span>
+                      <span>USD </span>
                       <span>{product.price}</span>
                     </h4>
                     <p className="para2 mb-15">{product.description}</p>
