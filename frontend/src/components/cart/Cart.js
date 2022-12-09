@@ -143,7 +143,7 @@ const Cart = ({ history }) => {
                 <p>
                   Est. total:{" "}
                   <span className="order-summary-values">
-                    $
+                    PKR
                     {cartItems
                       .reduce(
                         (acc, item) => acc + item.quantity * item.price,
