@@ -55,7 +55,6 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   //change the query here to only get approved products
   //get all the products which are approved (status True)
-  console.log("At products fetch!");
   const apiFeatures = new APIFeatures(Product.find(), req.query)
     .search()
     .filter();
@@ -65,7 +64,6 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
   apiFeatures.pagination(resPerPage);
   products = await apiFeatures.query;
-  console.log("At products fetch: ", products);
 
   res.status(200).json({
     success: true,
@@ -88,6 +86,7 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get all products (Admin)  =>   /api/v1/admin/products
 exports.superGetAdminProducts = catchAsyncErrors(async (req, res, next) => {
+  console.log("Param:", req.params.user)
   const products = await Product.find();
 
   res.status(200).json({

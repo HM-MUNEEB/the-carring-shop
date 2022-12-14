@@ -16,6 +16,10 @@ import {
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const ProductsList = ({ history }) => {
+
+  const { user } = useSelector((state) => state.auth)
+
+
   const alert = useAlert();
   const dispatch = useDispatch();
 
@@ -25,7 +29,8 @@ const ProductsList = ({ history }) => {
   );
 
   useEffect(() => {
-    dispatch(getAdminProducts());
+
+    dispatch(getAdminProducts(user._id));
 
     if (error) {
       alert.error(error);
