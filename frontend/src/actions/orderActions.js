@@ -91,11 +91,11 @@ export const getOrderDetails = (id) => async (dispatch) => {
 };
 
 // Get all orders - ADMIN
-export const allOrders = () => async (dispatch) => {
+export const allOrders = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_ORDERS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/admin/orders`);
+    const { data } = await axios.get(`/api/v1/admin/orders?user=${id}`);
 
     dispatch({
       type: ALL_ORDERS_SUCCESS,

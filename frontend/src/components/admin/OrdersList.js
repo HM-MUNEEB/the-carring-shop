@@ -18,12 +18,12 @@ import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 const OrdersList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
-
+  const { user } = useSelector((state) => state.auth)
   const { loading, error, orders } = useSelector((state) => state.allOrders);
   const { isDeleted } = useSelector((state) => state.order);
 
   useEffect(() => {
-    dispatch(allOrders());
+    dispatch(allOrders(user._id));
 
     if (error) {
       alert.error(error);
