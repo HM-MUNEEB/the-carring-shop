@@ -76,7 +76,9 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get all products (Admin)  =>   /api/v1/admin/products
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
-  const products = await Product.find();
+  console.log("Param:", req.query.user)
+  const products = await Product.find({user: req.query.user});
+
 
   res.status(200).json({
     success: true,
@@ -86,7 +88,6 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get all products (Admin)  =>   /api/v1/admin/products
 exports.superGetAdminProducts = catchAsyncErrors(async (req, res, next) => {
-  console.log("Param:", req.params.user)
   const products = await Product.find();
 
   res.status(200).json({
