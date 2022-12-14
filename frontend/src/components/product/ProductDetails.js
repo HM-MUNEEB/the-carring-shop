@@ -51,7 +51,8 @@ const ProductDetails = ({ match }) => {
     }
   }, [dispatch, alert, error, reviewError, match.params.id, success]);
 
-  const addToCart = () => {
+  const addToCart = (e) => {
+    e.preventDefault();
     dispatch(addItemToCart(match.params.id, quantity));
     alert.success("Item Added to Cart");
   };
