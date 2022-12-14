@@ -9,13 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAdminProducts } from "../../actions/productActions";
 import { allOrders } from "../../actions/orderActions";
-import { allUsers } from "../../actions/userActions";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-
+  
+  const { user } = useSelector((state) => state.auth)
   const { products } = useSelector((state) => state.products);
-  const { users } = useSelector((state) => state.allUsers);
   const { orders, totalAmount, loading } = useSelector(
     (state) => state.allOrders
   );
@@ -28,9 +27,8 @@ const Dashboard = () => {
   });
 
   useEffect(() => {
-    dispatch(getAdminProducts());
-    dispatch(allOrders());
-    dispatch(allUsers());
+    dispatch(getAdminProducts(user._id));
+    dispatch(allOrders(user._id));
   }, [dispatch]);
 
   return (
