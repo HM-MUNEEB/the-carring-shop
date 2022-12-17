@@ -30,7 +30,7 @@ const Contact = () => {
                   </p>
                   <form
                     class="contact-form-title"
-                    action="https://formsubmit.co/hy106625@gmail.com"
+                    action="https://formsubmit.co/thecaringshopinfo@gmail.com"
                     method="post"
                   >
                     <div class="row">
