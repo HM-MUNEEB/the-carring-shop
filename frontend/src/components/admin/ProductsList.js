@@ -73,10 +73,6 @@ const ProductsList = ({ history }) => {
           sort: "asc",
         },
         {
-          label: "Status",
-          field: "status",
-        },
-        {
           label: "Actions",
           field: "actions",
         },
@@ -89,9 +85,8 @@ const ProductsList = ({ history }) => {
       data.rows.push({
         id: product._id,
         name: product.name,
-        price: `$${product.price}`,
+        price: `PKR ${product.price}`,
         stock: product.stock,
-        status: product.status === false ? "Not Approved" : "Approved",
         actions: (
           <Fragment>
             <Link

@@ -80,7 +80,7 @@ const SuperProductsList = ({ history }) => {
       data.rows.push({
         id: product._id,
         name: product.name,
-        price: `$${product.price}`,
+        price: `PKR ${product.price}`,
         stock: product.stock,
         actions: (
           <Fragment>

@@ -76,7 +76,7 @@ const SuperOrdersList = ({ history }) => {
       data.rows.push({
         id: order._id,
         numofItems: order.orderItems.length,
-        amount: `$${order.totalPrice}`,
+        amount: `PKR ${order.totalPrice}`,
         status:
           order.orderStatus &&
           String(order.orderStatus).includes("Delivered") ? (
