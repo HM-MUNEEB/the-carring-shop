@@ -108,25 +108,6 @@ const Home = ({ match }) => {
                 <Fragment>
                   <div className="col-6 col-md-3 mt-5 mb-5">
                     <div className="px-5">
-                      <Range
-                        marks={{
-                          1: `$1`,
-                          10000: `$10000`,
-                        }}
-                        min={1}
-                        max={10000}
-                        defaultValue={[1, 10000]}
-                        tipFormatter={(value) => `Rs${value}`}
-                        tipProps={{
-                          placement: "top",
-                          visible: true,
-                        }}
-                        value={price}
-                        onChange={(price) => setPrice(price)}
-                      />
-
-                      <hr className="my-5" />
-
                       <div className="mt-5">
                         <h4 className="mb-3">Categories</h4>
 

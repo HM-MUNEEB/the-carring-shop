@@ -86,8 +86,7 @@ const SuperCategorysList = ({ history }) => {
 
   const deleteCategoryHandler = (id) => {
     dispatch(dltCategory(id));
-    setInterval(() => {
-      
+    setTimeout(() => {
       dispatch(getCategory());
     }, 3000);
   };
