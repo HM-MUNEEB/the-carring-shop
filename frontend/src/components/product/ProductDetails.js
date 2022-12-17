@@ -123,6 +123,10 @@ const ProductDetails = ({ match }) => {
     dispatch(newReview(formData));
   };
 
+  useEffect(()=>{
+    console.log("user, ", user?.role === "admin")
+  }, [])
+
   return (
     <Fragment>
       {loading ? (
@@ -238,15 +242,20 @@ const ProductDetails = ({ match }) => {
                           </button>
                         </div>
                       </div>
+                      {user?.role === "admin" ?                       
+                        <p className="eg-btn md--btn primary--btn">
+                          Admin Can't Buy!
+                        </p>
+                      :
                       <button
                         onClick={addToCart}
-                        disabled={product.stock === 0}
+                        disabled={product.stock === 0 || user?.role === "admin"}
                         style={{ background: "none", border: "none" }}
                       >
                         <a href="" className="eg-btn md--btn primary--btn">
                           Add to cart
                         </a>
-                      </button>
+                      </button>}
                     </div>
                     <ul className="prod-info">
                       <li>
