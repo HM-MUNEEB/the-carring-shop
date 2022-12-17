@@ -9,8 +9,8 @@ import Sidebar from "./Sidebar";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getAdminProducts,
   superDeleteProduct,
+  superGetAdminProducts,
   clearErrors,
 } from "../../actions/productActions";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
@@ -25,7 +25,7 @@ const SuperProductsList = ({ history }) => {
   );
 
   useEffect(() => {
-    dispatch(getAdminProducts());
+    dispatch(superGetAdminProducts());
 
     if (error) {
       alert.error(error);
