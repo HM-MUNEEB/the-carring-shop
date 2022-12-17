@@ -260,7 +260,7 @@ const Header = () => {
 
                 <div className="mt-2">
                 <a href="http://localhost:3000/" target="_blank">
-                  <button className="btn btn-warning rounded">HELP!</button>
+                  <button className="btn btn-warning rounded">TCS MEDIA</button>
                   </a>
                 </div>
                 
