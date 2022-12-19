@@ -98,6 +98,7 @@ exports.superAdminLogin = catchAsyncErrors(async (req, res, next) => {
   // Finding user in database
   const SuperUser = await SuperAdmin.findOne({ email }).select("+password");
 
+  console.log("Super admin: ", SuperUser)
   if (!SuperUser) {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
