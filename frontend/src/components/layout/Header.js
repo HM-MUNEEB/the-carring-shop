@@ -256,14 +256,15 @@ const Header = () => {
                     </li>
                   </ul>
                 </div>
-                
 
                 <div className="mt-2">
-                <a href="http://localhost:3000/" target="_blank">
-                  <button className="btn btn-warning rounded">TCS MEDIA</button>
+                  <a href="http://localhost:3000/" target="_blank">
+                    <button className="btn btn-warning rounded">
+                      TCS MEDIA
+                    </button>
                   </a>
                 </div>
-                
+
                 {/* <div className="header-1-contact d-flex align-items-center">
                   <div className="contact-num">
                     <span>Hot Line Number</span>

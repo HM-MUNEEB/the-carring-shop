@@ -65,8 +65,8 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
 
 // Get all orders - ADMIN  =>   /api/v1/admin/orders/
 exports.allOrders = catchAsyncErrors(async (req, res, next) => {
-  console.log("Query Param at order:", req.query.user)
-  const orders = await Order.find({user: req.query.user});
+  console.log("Query Param at order:", req.query.user);
+  const orders = await Order.find();
 
   let totalAmount = 0;
 
