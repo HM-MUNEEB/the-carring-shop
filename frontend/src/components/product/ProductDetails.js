@@ -123,9 +123,9 @@ const ProductDetails = ({ match }) => {
     dispatch(newReview(formData));
   };
 
-  useEffect(()=>{
-    console.log("user, ", user?.role === "admin")
-  }, [])
+  useEffect(() => {
+    console.log("user, ", user?.role === "admin");
+  }, []);
 
   return (
     <Fragment>
@@ -186,6 +186,9 @@ const ProductDetails = ({ match }) => {
                         {product.numofReviews} Review)
                       </li>
                     </ul>
+                    <i>
+                      <h3 className="eg-title1 mb-25">{product.seller}</h3>
+                    </i>
                     <h3 className="eg-title1 mb-25">{product.name}</h3>
                     <h4 className="price-title border--bottom2 mb-15">
                       <span>PKR </span>
@@ -242,20 +245,23 @@ const ProductDetails = ({ match }) => {
                           </button>
                         </div>
                       </div>
-                      {user?.role === "admin" ?                       
+                      {user?.role === "admin" ? (
                         <p className="eg-btn md--btn primary--btn">
                           Admin Can't Buy!
                         </p>
-                      :
-                      <button
-                        onClick={addToCart}
-                        disabled={product.stock === 0 || user?.role === "admin"}
-                        style={{ background: "none", border: "none" }}
-                      >
-                        <a href="" className="eg-btn md--btn primary--btn">
-                          Add to cart
-                        </a>
-                      </button>}
+                      ) : (
+                        <button
+                          onClick={addToCart}
+                          disabled={
+                            product.stock === 0 || user?.role === "admin"
+                          }
+                          style={{ background: "none", border: "none" }}
+                        >
+                          <a href="" className="eg-btn md--btn primary--btn">
+                            Add to cart
+                          </a>
+                        </button>
+                      )}
                     </div>
                     <ul className="prod-info">
                       <li>
