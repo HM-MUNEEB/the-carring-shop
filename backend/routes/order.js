@@ -8,6 +8,7 @@ const {
   allOrders,
   updateOrder,
   deleteOrder,
+  superAllOrders,
 } = require("../controllers/orderController");
 
 const {
@@ -31,7 +32,11 @@ router
 
 router
   .route("/super-admin/orders/")
-  .get(isAuthenticatedSuperAdmin, authorizeRoles("super-admin"), allOrders);
+  .get(
+    isAuthenticatedSuperAdmin,
+    authorizeRoles("super-admin"),
+    superAllOrders
+  );
 router
   .route("/super-admin/order/:id")
   .put(isAuthenticatedSuperAdmin, authorizeRoles("super-admin"), updateOrder)

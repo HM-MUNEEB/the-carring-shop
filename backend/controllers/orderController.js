@@ -81,6 +81,22 @@ exports.allOrders = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
+// Get all orders - super-admin  =>   /api/v1/super-admin/orders/
+exports.superAllOrders = catchAsyncErrors(async (req, res, next) => {
+  const orders = await Order.find();
+
+  let totalAmount = 0;
+
+  orders.forEach((order) => {
+    totalAmount += order.totalPrice;
+  });
+
+  res.status(200).json({
+    success: true,
+    totalAmount,
+    orders,
+  });
+});
 // Update / Process order - ADMIN  =>   /api/v1/admin/order/:id
 exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
