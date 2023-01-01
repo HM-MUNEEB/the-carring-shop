@@ -89,7 +89,7 @@ const SuperProcessOrder = ({ match }) => {
                     {shippingDetails}
                   </p>
                   <p>
-                    <b>Amount:</b> ${totalPrice}
+                    <b>Amount:</b> PKR {totalPrice}
                   </p>
 
                   <hr />
@@ -139,7 +139,7 @@ const SuperProcessOrder = ({ match }) => {
                           </div>
 
                           <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                            <p>${item.price}</p>
+                            <p>PKR {item.price}</p>
                           </div>
 
                           <div className="col-4 col-lg-3 mt-4 mt-lg-0">
