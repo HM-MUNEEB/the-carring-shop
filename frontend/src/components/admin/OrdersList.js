@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MDBDataTable } from "mdbreact";
 
@@ -18,8 +18,11 @@ import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 const OrdersList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth)
-  const { loading, error, orders } = useSelector((state) => state.allOrders);
+  const [finalOrders, setFinalOrders] = useState([]);
+  const { user } = useSelector((state) => state.auth);
+  const { loading, error, orders, productsId } = useSelector(
+    (state) => state.allOrders
+  );
   const { isDeleted } = useSelector((state) => state.order);
 
   useEffect(() => {
@@ -40,6 +43,10 @@ const OrdersList = ({ history }) => {
   const deleteOrderHandler = (id) => {
     dispatch(deleteOrder(id));
   };
+
+  useEffect(() => {
+    console.log(orders);
+  }, [orders]);
 
   const setOrders = () => {
     const data = {
@@ -76,7 +83,7 @@ const OrdersList = ({ history }) => {
       data.rows.push({
         id: order._id,
         numofItems: order.orderItems.length,
-        amount: `$${order.totalPrice}`,
+        amount: `PKR ${order.totalPrice}`,
         status:
           order.orderStatus &&
           String(order.orderStatus).includes("Delivered") ? (
